@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 const { User } = require("../db/models");
 const { asyncHandler, csrfProtection, generatePassword, checkPassword } = require("./utils");
 const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
-const { signupValidations, signupValidators } = require("../validations");
+const { signupValidations, signupValidators, loginValidators } = require("../validations");
 
 const router = express.Router();
 
@@ -14,8 +14,10 @@ router.get('/', function(req, res, next) {
 });
 
 // Send the form to login to the user
-router.get('/login', (req, res) => {
-  res.render("user-login");
+router.get('/login', csrfProtection, (req, res) => {
+  res.render("user-login", {
+    csrfToken: req.csrfToken()
+  });
 });
 
 // Send the form to register a new user
@@ -31,9 +33,28 @@ router.get('/:id(\\d+)', (req, res) => {
 });
 
 // Process the login form/request from the user and create a session
-router.post('/login', (req, res) => {
-  
-});
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    const isPassword = await checkPassword(password, email);
+    const errors = [];
+
+    if(!user || !isPassword) {
+      errors.push("YOU'RE WRONG!!!!");
+    }
+
+    if(errors.length) {
+      res.render("/users/login", {
+        errors,
+        csrfToken: csrfToken()
+      });
+      return;
+    } else {
+      loginUser(req, res, user);
+      res.redirect("/");
+      return;
+    }
+}));
 
 // Process the logout request from the user and terminate the session
 router.post('/logout', (req, res) => {

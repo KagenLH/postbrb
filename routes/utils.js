@@ -17,7 +17,7 @@ const generatePassword = async (password) => {
 
 const checkPassword = async (password, email) => {
     const user = await User.findOne({ where: { email } });
-    const isPassword = await bcrypt.compare(password, user.hashedPassword);
+    const isPassword = await bcrypt.compare(password, user.hashedPassword.toString());
     return isPassword;
 }
 
