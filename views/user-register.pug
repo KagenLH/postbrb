@@ -1,6 +1,10 @@
 extends layout 
 
 block content 
+    if errors 
+        ul.signup-errorlist
+            each error in errors 
+                li.signup-error #{error} 
     form.signup-form(action="/users/signup" method="post")
         input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
         label(for="username") Username 

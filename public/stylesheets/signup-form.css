@@ -15,3 +15,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.signup-errorlist {
+    position: absolute;
+    top: 12%;
+}
+

@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 const { User } = require("../db/models");
 const { asyncHandler, csrfProtection, generatePassword, checkPassword } = require("./utils");
 const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
-const { signupValidations, signupValidators, loginValidators } = require("../validations");
+const { signupValidators, loginValidators } = require("../validations");
 
 const router = express.Router();
 
@@ -35,25 +35,25 @@ router.get('/:id(\\d+)', (req, res) => {
 // Process the login form/request from the user and create a session
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
-    const isPassword = await checkPassword(password, email);
-    const errors = [];
+    
 
-    if(!user || !isPassword) {
-      errors.push("YOU'RE WRONG!!!!");
-    }
+    const validationErrors = validationResult(req);
 
-    if(errors.length) {
-      res.render("/users/login", {
-        errors,
-        csrfToken: csrfToken()
-      });
-      return;
-    } else {
+    if(validationErrors.isEmpty()){
+
+      const user = await User.findOne({ where: { email } });
       loginUser(req, res, user);
       req.session.save(() => res.redirect('/'))
       return;
+    
+    } else {
+
+      const errors = validationErrors.array().map((error) => error.msg);
+      res.render('user-login', {csrfToken: req.csrfToken(), errors})
+   
     }
+    
+   
 }));
 
 // Process the logout request from the user and terminate the session
@@ -67,24 +67,20 @@ router.get('/logout', (req, res) => {
 router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req, res, next) => {
   const { username, password, email, avatarUrl } = req.body;
 
-  const emailExists = await User.findOne({ where: { email } });
-
-  const usernameExists = await User.findOne({ where: { username } });
-
-  if(!emailExists && !usernameExists) {
-    const validationErrors = validationResult(req);
+  const validationErrors = validationResult(req);
+  
     if(validationErrors.isEmpty()){
+      const hashedPassword = await generatePassword(password);
+      const newUser = await User.create({ username, hashedPassword, email, avatarUrl});
+      loginUser(req, res, newUser)
+
+      return req.session.save(() => res.redirect('/'));
     
-    const hashedPassword = await generatePassword(password);
-    const newUser = await User.create({ username, hashedPassword, email, avatarUrl});
-    loginUser(req, res, newUser)
-    return req.session.save(() => res.redirect('/'));
-    } 
   } else { 
-    const errors = validatorErrors.array().map((error) => error.msg);
-    if(emailExists) errors.push("A user with that email already exists.");
-    if(usernameExists) errors.push("A user with that username already exists.");
-    res.render('user-register', {errors})
+      const errors = validationErrors.array().map((error) => error.msg);
+    
+   
+      res.render('user-register', {csrfToken: req.csrfToken(), errors})
   }
 }));
 
