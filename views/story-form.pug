@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form.story-form(action="" method="")
+        input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
+        label(for="title") Story Title
+        input(type="text" name="title" id="story-form__title" placeholder="Story   Title" required)
+        label(for="content") Tell your story
+        textarea(name="content" id="story-form__content" placeholder="Tell your story here...")
+    button(type="submit") Publish
+    //- button Draft
+    //- button Trash
