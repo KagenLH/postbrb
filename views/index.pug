@@ -9,7 +9,14 @@ append head
 block content
   div.main-cotent
     h1= title
-    if locals.authenticated 
+    if locals.authenticated
       p Welcome #{locals.user.username}
-    else 
+    else
       p Please log in
+  div.stories
+    if locals.authenticated
+      each story in stories
+        p= story.title
+    else
+      each story in stories
+        p= story.content

@@ -10,7 +10,7 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       content: {
         allowNull: false,
@@ -20,11 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model:'Users'}
-      },
-      catagory_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-        //TODO
       },
       createdAt: {
         allowNull: false,
