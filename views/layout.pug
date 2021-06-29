@@ -9,13 +9,18 @@ html
         link(rel='stylesheet' href='/stylesheets/login-form.css')
   body
     div#navbar
-      div.nav-buttons
-        //-a only sent by GET-//
         if locals.authenticated
-          a(href="/users/logout").auth-buttons Logout
-        else
-          a(href="/users/login").auth-buttons Login 
-          a(href="/users/login/demo").auth-buttons Demo 
-          a(href="/users/signup").auth-buttons Signup
+          img.user-avatar.user-avatar-navbar(src=locals.user.avatarUrl)
+        div.nav-buttons
+          //-a only sent by GET-//
+          if locals.authenticated
+            div.user-info-tray 
+              span.user-info__text Currently logged in as #{locals.user.username}.
+            div.auth-buttons#auth-logout-button
+              a(href="/users/logout").auth-logout-link Logout
+          else
+            a(href="/users/login").auth-buttons Login 
+            a(href="/users/login/demo").auth-buttons Demo 
+            a(href="/users/signup").auth-buttons Signup
       
     block content

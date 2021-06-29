@@ -5,4 +5,16 @@ h1 {
 .main-cotent {
     position: absolute;
     top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.user-avatar {
+    position: relative;
+    margin-top: 10px;
+    margin-right: 12px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    z-index: 99;
 }

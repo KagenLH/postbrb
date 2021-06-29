@@ -7,22 +7,46 @@
     justify-content: flex-end; 
 }
 .nav-buttons {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-right: 25px;
 }
 .auth-buttons {
    border-radius: 80px;
-   width: 75px;
-   color: rgb(0, 0, 0);
+   width: 150px;
+   color: rgb(59, 58, 58);
    background-color: lightblue;
    text-align: center;
    text-decoration: none;
+   font-weight: bold;
+   transition: background-color 0.25s;
 }
 
 .auth-buttons:hover {
     cursor: pointer;
-    background-color: aqua;
+    background-color: blue;
 }
+
+.user-info-tray {
+  color: rgb(211, 208, 208);
+  margin-right: 25px;
+}
+
+.user-info__text {
+  font-weight: bold;
+} 
+
+#auth-logout-button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logout-link {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 

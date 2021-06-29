@@ -8,8 +8,8 @@ append head
 
 block content
   div.main-cotent
-    h1= title
+    h1.main-content__header New on PostBrb
     if locals.authenticated 
-      p Welcome #{locals.user.username}
+      p Welcome #{locals.user.username}. There are currently no stories. Begin by creating a story!
     else 
-      p Please log in
+      p You are not logged in and there are currently no stories. You can begin by logging in and creating a story of your own!
