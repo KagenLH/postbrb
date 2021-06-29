@@ -1,7 +1,10 @@
 extends layout 
 
 block content
-    div.signup-form-container 
+    div.signup-form-container
+        p.signup-message-container 
+            img.auth-logo(src="/assets/images/postbrb-logo.jpg") 
+            span.signup-message Join the PostBrb community.
         if errors
             div.signup__error-container 
                 ul.signup-errorlist
@@ -19,7 +22,7 @@ block content
             input(type="password" name="confirmPassword" id="signup-form__confirm-password" placeholder="Confirm Password" value=confirmPassword)
             div(class="signup-form__avatar-icons")
                 p.avatar-select-label Select your user avatar:
-                input(type="radio" name="avatarUrl" value="/assets/avatars/gamer.png")
+                input(type="radio" name="avatarUrl" value="/assets/avatars/gamer.png" checked)
                 img.user-avatar.signup-form__avatar(src="/assets/avatars/gamer.png")
                 input(type="radio" name="avatarUrl" value="/assets/avatars/man.png")
                 img.user-avatar.signup-form__avatar(src="/assets/avatars/man.png")

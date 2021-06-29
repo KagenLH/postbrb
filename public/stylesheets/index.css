@@ -18,3 +18,9 @@ h1 {
     height: 60px;
     z-index: 99;
 }
+
+.auth-logo {
+    position: relative;
+    height: 100px;
+    width: 100px;
+}
