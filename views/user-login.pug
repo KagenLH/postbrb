@@ -1,10 +1,12 @@
 extends layout 
 
 block content 
-    form(action="/users/login" method="post")
+    form.login-form(action="/users/login" method="post")
         input(type="hidden" name="_csrf" id="_csrf" value=csrfToken) 
         label(for="email") E-mail
         input(type="email" name="email" id="login-form__email" placeholder="Your E-mail" value=email)
         label(for="password") Password
         input(type="password" name="password" id="login-form__password" placeholder="Password" value=password)
         button Login
+
+    

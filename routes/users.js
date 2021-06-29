@@ -51,14 +51,16 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
       return;
     } else {
       loginUser(req, res, user);
-      res.redirect("/");
+      req.session.save(() => res.redirect('/'))
       return;
     }
 }));
 
 // Process the logout request from the user and terminate the session
-router.post('/logout', (req, res) => {
-
+router.get('/logout', (req, res) => {
+  logoutUser(req, res);
+  req.session.save(() => res.redirect('/'))
+  
 });
 
 // Process the signup form/request from the user and create a new user in the database
@@ -71,18 +73,29 @@ router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req
 
   if(!emailExists && !usernameExists) {
     const validationErrors = validationResult(req);
+    if(validationErrors.isEmpty()){
+    
     const hashedPassword = await generatePassword(password);
     const newUser = await User.create({ username, hashedPassword, email, avatarUrl});
-    res.redirect("/");
+    loginUser(req, res, newUser)
+    return req.session.save(() => res.redirect('/'));
+    } 
   } else { 
-    const errors = [];
-    if(emailExists) errors.push(Error("A user with that email already exists."));
-    if(usernameExists) errors.push(Error("A user with that username already exists."));
-    next(errors);
+    const errors = validatorErrors.array().map((error) => error.msg);
+    if(emailExists) errors.push("A user with that email already exists.");
+    if(usernameExists) errors.push("A user with that username already exists.");
+    res.render('user-register', {errors})
   }
 }));
 
 // Todo: Routes for followers
+
+router.get("/login/demo", csrfProtection, asyncHandler(async(req, res, next) => {
+  const demoUser = await User.findOne({where: {email: 'demo@demo.com' }})
+  console.log(demoUser)
+  loginUser(req, res, demoUser)
+  req.session.save(() => res.redirect('/'))
+}))
 
 
 module.exports = router;

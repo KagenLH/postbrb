@@ -7,5 +7,9 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  div.main-cotent
+    h1= title
+    if locals.authenticated 
+      p Welcome #{locals.user.username}
+    else 
+      p Please log in

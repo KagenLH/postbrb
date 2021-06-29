@@ -1,0 +1,27 @@
+#navbar {
+    position: fixed;
+    background-color: rgb(12, 12, 154); 
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: flex-end; 
+}
+.nav-buttons {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.auth-buttons {
+   border-radius: 80px;
+   width: 75px;
+   color: rgb(0, 0, 0);
+   background-color: lightblue;
+   text-align: center;
+   text-decoration: none;
+}
+
+.auth-buttons:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
