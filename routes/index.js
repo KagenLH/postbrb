@@ -13,7 +13,9 @@ const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
 
 router.get('/', asyncHandler( async (req,res) => {
 
-  const stories = await Story.findAll();
+  const stories = await Story.findAll({
+    include: User
+  });
 
   res.render('index', { title: 'a/A Express Skeleton Home', stories});
   // res.render('homepage', { title: 'a/A Express Skeleton Home', stories});
