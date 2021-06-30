@@ -1,5 +1,5 @@
 const express = require('express');
-const { validationResult } = require("express-validator");
+const { validationResult, Result } = require("express-validator");
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
         include: User
     });
     
-    res.render('', {story})
+    res.render('story', {story})
 }));
 
 
@@ -40,6 +40,39 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
   
       }
 
+}))
+
+router.get('/:id(\\d+)/update', csrfProtection, requireAuth, asyncHandler(async(req, res)=>{
+    storyId = parseInt(req.params.id, 10);
+    const story = await Story.findByPk(storyId)
+
+    res.render('update-form',{csrfToken: req.csrfToken(), story}) 
+
+}))
+
+router.post('/:id(\\d+)/update', csrfProtection, requireAuth, storyValidators, asyncHandler(async(req, res)=> {
+   const {title, content} = req.body; 
+
+   const validationErrors = validationResult(req)
+   if(validationErrors.isEmpty()){
+        const storyId = parseInt(req.params.id, 10)
+        // check if way 2 works if this doesn't 
+        const updatedStory = await Story.findByPk(storyId)
+        story.title = title 
+        story.content = content 
+        await updatedStory.save()
+        res.redirect('/') // maybe we redirect to the page of the updated story  (story/:id)
+   } else {
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render('update-form', {csrfToken: req.csrfToken(), errors, title, content})
+   }
+}))
+
+router.post('/:id(\\d+)/delete',  csrfProtection, requireAuth, asyncHandler(async(req, res)=> {
+    const storyId = parseInt(req.params.id, 10);
+    const story = await Story.findByPk(storyId);
+    story.destroy(); 
+    res.redirect('/') // do we need to pass token?
 }))
 
 module.exports = router;
