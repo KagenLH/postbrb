@@ -2,13 +2,13 @@ extends layout
 
 block content
         each error in errors 
-            li.login-error #{error}  
-    form.story-form(action="/stories/new" method="post")
+            li.story-error #{error}  
+        form.story-form(action="/stories/new" method="post")
         input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
         label(for="title") Story Title
         input(type="text" name="title" id="story-form__title" placeholder="Story title here..." value=title required)
         label(for="content") Tell your story
         textarea(name="content" id="story-form__content" rows="20" cols="100" value=content placeholder="Tell your story here...")
         button(type="submit" class="publish") Publish
-    a(href="/" class="save_button") Save
-    a(href="/" class="trash_button") Trash
+        a(href="/" class="save_button") Save
+        a(href="/" class="trash_button") Trash
