@@ -17,7 +17,7 @@
 
 }
 
-.overall-box :hover{
+.overall-box:hover{
     background-color:rgba(130, 174, 255, 0.349);
 }
 
@@ -39,4 +39,16 @@
 .header{
     font-size: 36px;
     margin-bottom: 20px;
+}
+
+.story-title{
+    font-weight: bolder;
+
+
+}
+
+
+.story-detail{
+    color:rgb(63, 79, 109);
+    display: inline;
 }

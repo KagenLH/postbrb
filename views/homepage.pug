@@ -13,7 +13,8 @@ block content
             div(class="overall-box")
                 div(class="story-box")
                     h4(class="story-title")= story.title
-                    div(class="story-byAuthor")=`Aurthor: ${story.User.username}`
-                    div(class="story-description")=story.content.slice(0, 80)
-                    div(class="story-date")=story.createdAt.toLocaleDateString()
-                    a(href=`/stories/${story.id}` class="button-read") Read More
+                    p(class="story-description")=story.content.slice(0, 80)
+                    div(class="story-detail")
+                        p=`Aurthor: ${story.User.username}`
+                        p=story.createdAt.toLocaleDateString()
+                        a(href=`/stories/${story.id}` class="button-read") Read More

@@ -2,11 +2,32 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    max-width: 2000px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.story-title{
-    font-weight: bold;
+#story-form__title{
+    border: 2px solid rgba(16, 16, 17, 0.534);
+    color: black
+}
+
+#story-form__content{
+    border: 2px solid rgba(16, 16, 17, 0.534);
+    color: black
+}
+
+.publish{
+    width: 60px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+
+    /* display: flex;
+    justify-content: center; */
+}
+
+.publish:hover{
+    background-color: powderblue;
+    cursor: pointer;
 }
