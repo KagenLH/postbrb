@@ -1,0 +1,21 @@
+.container__stories{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overall-box{
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid blue;
+    margin: 2.5px;
+}
+
+.story-box{
+
+
+}
