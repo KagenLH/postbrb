@@ -4,7 +4,7 @@
     width: 100%;
     height: 8%;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .navbar-end {
@@ -60,7 +60,7 @@
   padding-left: 10px;
   padding-right: 10px;
   height: 100%;
-  width: 20%;
+  width: 65%;
   /* border-bottom: 2px solid rgb(12, 12, 154); */
   cursor: pointer;
   background-color: white;
