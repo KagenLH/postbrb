@@ -4,6 +4,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+    background-color: white;
+    padding: 30px;
+    border: 2px solid darkgray;
 }
 
 .login-form {
@@ -22,6 +25,7 @@
     background-color: rgb(214, 210, 210);
     position: relative;
     color: red;
+    margin-top: 10px;
 }
 
 .login-form > * {
@@ -36,13 +40,14 @@
     margin-top: 15px;
     border-radius: 25px;
     font-weight: bold;
-    background-color: lightblue;
+    background-color: blue;
     transition: background-color 0.25s;
+    color: white;
 }
 
 .login-button:hover {
     cursor: pointer;
-    background-color: blue;
+    background-color: cornflowerblue;
 }
 
 .login-message-container {

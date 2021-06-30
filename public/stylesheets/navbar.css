@@ -1,11 +1,16 @@
 #navbar {
     position: fixed;
-    background-color: rgb(12, 12, 154); 
+    background-color: rgb(12, 12, 154);
     width: 100%;
     height: 8%;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between; 
 }
+
+.navbar-end {
+  display: flex;
+}
+
 .nav-buttons {
   display: flex;
   flex-direction: column;
@@ -16,16 +21,17 @@
    border-radius: 80px;
    width: 150px;
    color: rgb(59, 58, 58);
-   background-color: lightblue;
+   background-color: blue;
    text-align: center;
    text-decoration: none;
    font-weight: bold;
    transition: background-color 0.25s;
+   color: white;
 }
 
 .auth-buttons:hover {
     cursor: pointer;
-    background-color: blue;
+    background-color: cornflowerblue;
 }
 
 .user-info-tray {
@@ -47,6 +53,17 @@
 .auth-logout-link {
   text-decoration: none;
   font-weight: bold;
+}
+
+.nav-logo {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  width: 20%;
+  /* border-bottom: 2px solid rgb(12, 12, 154); */
+  cursor: pointer;
+  background-color: white;
 }
 
 

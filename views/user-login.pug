@@ -1,9 +1,10 @@
 extends layout 
 
 block content
+  div.page-container
     div.login-form-container 
       p.login-message-container
-        img.auth-logo(src="/assets/images/postbrb-logo.jpg")   
+        img.auth-logo(src="/assets/images/postbrb-logo.png")   
         span.login-message Welcome back to PostBrb
       if errors
         div.login__error-container 

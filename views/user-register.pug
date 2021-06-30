@@ -1,31 +1,32 @@
 extends layout 
 
 block content
-    div.signup-form-container
-        p.signup-message-container 
-            img.auth-logo(src="/assets/images/postbrb-logo.jpg") 
-            span.signup-message Join the PostBrb community.
-        if errors
-            div.signup__error-container 
-                ul.signup-errorlist
-                    each error in errors 
-                        li.signup-error #{error} 
-        form.signup-form(action="/users/signup" method="post")
-            input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
-            label(for="username") Username 
-            input(type="text" name="username" id="signup-form__username" placeholder="Your username" value=username) 
-            label(for="email") E-mail
-            input(type="email" name="email" id="signup-form__email" placeholder="Your E-mail" value=email)
-            label(for="password") Password
-            input(type="password" name="password" id="signup-form__password" placeholder="Password" value=password)
-            label(for="confirmPassword") Confirm Password
-            input(type="password" name="confirmPassword" id="signup-form__confirm-password" placeholder="Confirm Password" value=confirmPassword)
-            div(class="signup-form__avatar-icons")
-                p.avatar-select-label Select your user avatar:
-                input(type="radio" name="avatarUrl" value="/assets/avatars/gamer.png" checked)
-                img.user-avatar.signup-form__avatar(src="/assets/avatars/gamer.png")
-                input(type="radio" name="avatarUrl" value="/assets/avatars/man.png")
-                img.user-avatar.signup-form__avatar(src="/assets/avatars/man.png")
-                input(type="radio" name="avatarUrl" value="/assets/avatars/woman.png")
-                img.user-avatar.signup-form__avatar(src="/assets/avatars/woman.png")
-            button.signup-button Sign-Up
+    div.page-container
+        div.signup-form-container
+            p.signup-message-container 
+                img.auth-logo(src="/assets/images/postbrb-logo.png") 
+                span.signup-message Join the PostBrb community.
+            if errors
+                div.signup__error-container 
+                    ul.signup-errorlist
+                        each error in errors 
+                            li.signup-error #{error} 
+            form.signup-form(action="/users/signup" method="post")
+                input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
+                label(for="username") Username 
+                input(type="text" name="username" id="signup-form__username" placeholder="Your username" value=username) 
+                label(for="email") E-mail
+                input(type="email" name="email" id="signup-form__email" placeholder="Your E-mail" value=email)
+                label(for="password") Password
+                input(type="password" name="password" id="signup-form__password" placeholder="Password" value=password)
+                label(for="confirmPassword") Confirm Password
+                input(type="password" name="confirmPassword" id="signup-form__confirm-password" placeholder="Confirm Password" value=confirmPassword)
+                div(class="signup-form__avatar-icons")
+                    p.avatar-select-label Select your user avatar:
+                    input(type="radio" name="avatarUrl" value="/assets/avatars/gamer.png" checked)
+                    img.user-avatar.signup-form__avatar(src="/assets/avatars/gamer.png")
+                    input(type="radio" name="avatarUrl" value="/assets/avatars/man.png")
+                    img.user-avatar.signup-form__avatar(src="/assets/avatars/man.png")
+                    input(type="radio" name="avatarUrl" value="/assets/avatars/woman.png")
+                    img.user-avatar.signup-form__avatar(src="/assets/avatars/woman.png")
+                button.signup-button Sign-Up

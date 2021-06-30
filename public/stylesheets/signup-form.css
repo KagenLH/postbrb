@@ -1,9 +1,20 @@
+.page-container {
+    position: absolute;
+    top: 8%;
+    background-image: url("/assets/images/coding.jpg");
+    width: 100%;
+    height: 92%;
+}
+
 .signup-form-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+    background-color: white;
+    padding: 30px;
+    border: 2px solid darkgray;
 }
 
 .signup-form__avatar {
@@ -30,6 +41,7 @@
     background-color: rgb(214, 210, 210);
     position: relative;
     color: red;
+    margin-top: 10px;
 }
 
 .signup-error {
@@ -48,13 +60,14 @@
     margin-top: 15px;
     border-radius: 25px;
     font-weight: bold;
-    background-color: lightblue;
+    background-color: blue;
     transition: background-color 0.25s;
+    color: white;
 }
 
 .signup-button:hover {
     cursor: pointer;
-    background-color: blue;
+    background-color: cornflowerblue;
 }
 
 .signup-message-container {
