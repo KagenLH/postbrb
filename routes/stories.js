@@ -34,7 +34,12 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
     if(validationErrors.isEmpty()){
         //TODO, grab the user_id
         await Story.create({title,content,user_id})
-    }
+    } else {
+
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render('stories-form', {csrfToken: req.csrfToken(), errors})
+  
+      }
 }))
 
 module.exports = router;
