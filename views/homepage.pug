@@ -10,7 +10,7 @@ block content
                 div(class="story-box")
                     h4(class="story-title")=story.title
                     div(class="story-byAuthor")=story.User.username
-                    div(class="story-description")=story.content.slice(0, 10)
+                    div(class="story-description")=story.content.slice(0, 30)
                     div(class="story-date")=story.createdAt
                     a(href=`/stories/${story.id}` class="btn btn-more") Read More
         //- article(class="homepage__stories")

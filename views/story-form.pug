@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    form.story-form(action="/" method="")
+    form.story-form(action="/stories/new" method="post")
         input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
         label(for="title") Story Title
         input(type="text" name="title" id="story-form__title" placeholder="Story   Title" required)

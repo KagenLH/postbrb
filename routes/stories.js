@@ -9,7 +9,7 @@ const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
 const { storyValidators } = require("../validations");
 
 router.get('/new', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
-    res.render('stories-form', { csrfToken: req.csrfToken() })
+    res.render('story-form', { csrfToken: req.csrfToken() })
 }));
 
 
@@ -18,7 +18,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
     const story = await Story.findByPk(storyId, {
         include: User
     });
-    
+
     res.render('', {story})
 }));
 
@@ -31,13 +31,13 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
     if(validationErrors.isEmpty()){
         const user_id = req.session.auth.userId;
         await Story.create({title, content, user_id})
-        
+
         return res.redirect('/')
     } else {
 
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('stories-form', {csrfToken: req.csrfToken(), errors, title, content})
-  
+        res.render('story-form', {csrfToken: req.csrfToken(), errors, title, content})
+
       }
 
 }))
