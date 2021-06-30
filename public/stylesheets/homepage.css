@@ -50,5 +50,8 @@
 
 .story-detail{
     color:rgb(63, 79, 109);
-    display: inline;
+    margin-bottom: 20px;
+    display: flexbox;
+    flex-direction: column;
+
 }

@@ -15,6 +15,5 @@ block content
                     h4(class="story-title")= story.title
                     p(class="story-description")=story.content.slice(0, 80)
                     div(class="story-detail")
-                        p=`Aurthor: ${story.User.username}`
-                        p=story.createdAt.toLocaleDateString()
-                        a(href=`/stories/${story.id}` class="button-read") Read More
+                        p=`Aurthor: ${story.User.username}  ${story.createdAt.toLocaleDateString()}`
+                    a(href=`/stories/${story.id}` class="button-read") Read More
