@@ -1,5 +1,5 @@
 const express = require('express');
-const { validationResult } = require("express-validator"); 
+const { validationResult } = require("express-validator");
 
 const { User } = require("../db/models");
 const { asyncHandler, csrfProtection, generatePassword, checkPassword } = require("./utils");
@@ -29,13 +29,13 @@ router.get('/signup', csrfProtection, (req, res)=> {
 
 // Retrieve a specific user's page
 router.get('/:id(\\d+)', (req, res) => {
-  // 
+  //
 });
 
 // Process the login form/request from the user and create a session
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
-    
+
 
     const validationErrors = validationResult(req);
 
@@ -45,22 +45,22 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
       loginUser(req, res, user);
       req.session.save(() => res.redirect('/'))
       return;
-    
+
     } else {
 
       const errors = validationErrors.array().map((error) => error.msg);
       res.render('user-login', {csrfToken: req.csrfToken(), errors})
-   
+
     }
-    
-   
+
+
 }));
 
 // Process the logout request from the user and terminate the session
 router.get('/logout', (req, res) => {
   logoutUser(req, res);
   req.session.save(() => res.redirect('/'))
-  
+
 });
 
 // Process the signup form/request from the user and create a new user in the database
@@ -68,18 +68,18 @@ router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req
   const { username, password, email, avatarUrl } = req.body;
 
   const validationErrors = validationResult(req);
-  
+
     if(validationErrors.isEmpty()){
       const hashedPassword = await generatePassword(password);
       const newUser = await User.create({ username, hashedPassword, email, avatarUrl});
       loginUser(req, res, newUser)
 
       return req.session.save(() => res.redirect('/'));
-    
-  } else { 
+
+  } else {
       const errors = validationErrors.array().map((error) => error.msg);
-    
-   
+
+
       res.render('user-register', {csrfToken: req.csrfToken(), errors})
   }
 }));

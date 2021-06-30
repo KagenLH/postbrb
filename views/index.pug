@@ -13,3 +13,10 @@ block content
       p Welcome #{locals.user.username}
     else
       p Please log in
+  div.stories
+    if locals.authenticated
+      each story in stories
+        p= story.title
+    else
+      each story in stories
+        p= story.content
