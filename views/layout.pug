@@ -10,8 +10,9 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
   body
     #navbar
-      .navbar-start 
-        img.nav-logo(src="/assets/images/postbrb-logo.png")
+      .navbar-start
+        a(href="/") 
+          img.nav-logo(src="/assets/images/postbrb-logo.png")
       .navbar-end
         if locals.authenticated
           img.user-avatar.user-avatar-navbar(src=locals.user.avatarUrl)
@@ -27,3 +28,9 @@ html
             a(href="/users/login/demo").auth-buttons Demo 
             a(href="/users/signup").auth-buttons Signup
     block content
+    footer.layout-footer 
+      p.footer-container
+        span.footer-text Created by Jun, Steffano V , Diana B. Tinoco, and Kagen Hearn. 
+        a(href="https://github.com/KagenLH/postbrb")
+          img.github-logo(src="/assets/images/github.png")
+
