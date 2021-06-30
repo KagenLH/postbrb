@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    div(class="story-container")
+        h1(class="story-title")= story.title
+            div(class="story-byAuthor")=story.User.username
+            div(class="story-date")=story.createdAt.toLocaleDateString()
+                a(href=`/users/${user.id}`)
+        p(class="content")=story.User.content
