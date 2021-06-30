@@ -1,8 +1,9 @@
 extends layout
 
 block content
-        each error in errors 
-            li.login-error #{error}  
+    if errors
+        each error in errors
+            li.login-error #{error}
     form.story-form(action="/stories/new" method="post")
         input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
         label(for="title") Story Title

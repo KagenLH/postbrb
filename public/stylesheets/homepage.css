@@ -10,16 +10,16 @@
 p {
     font-size: 15px;
 }
-/* 
+/*
 .border {
     position: relative;
-    border: 2px; 
-    border-style: dotted; 
+    border: 2px;
+    border-style: dotted;
     border-color: rgba(154, 197, 235, 3);
     border-radius: 40px;
     margin-left: 10px;
     margin-right: 40px;
-    margin-top: 40px; 
+    margin-top: 40px;
 } */
 .container__stories{
     position: fixed;
@@ -31,18 +31,19 @@ p {
     margin-top: 25%;
     margin-bottom: 300%;
     transform: translate(-50%, -50%);
-    
+    height: 550px;
+    overflow: auto;
 }
 
 .overall-box{
-   
+
     width: 700px;
     box-sizing: border-box;
     padding: 10px;
     border: 2px solid rgba(89, 89, 255, 0.329);
     border-radius: 5px;
     margin: 2.5px;
-    
+
 
 }
 
@@ -51,7 +52,7 @@ p {
 }
 
 .button-read{
-    
+
     float:right;
 
 }
@@ -74,7 +75,7 @@ p {
 
 
 .story-detail{
-    
+
     width: 200x;
     color:rgb(146, 151, 159);
     margin-bottom: 20px;
