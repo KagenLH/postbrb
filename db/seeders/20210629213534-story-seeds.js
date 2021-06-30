@@ -28,7 +28,7 @@ module.exports = {
     {
     title: 'title for Jun\'s story',
     content: 'The dog\'s skull has identical components regardless of breed type, but there is significant divergence in terms of skull shape between types. The three basic skull shapes are the elongated dolichocephalic type as seen in sighthounds, the intermediate mesocephalic or mesaticephalic type, and the very short and broad brachycephalic type exemplified by mastiff type skulls.',
-    user_id: 3,
+    user_id: 4,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
@@ -36,7 +36,7 @@ module.exports = {
   {
     title: 'title for Kagen\'s story',
     content: 'The generally accepted earliest dog remains were discovered in Bonn-Oberkassel, Germany. Contextual, isotopic, genetic, and morphological evidence shows that this dog was not a local wolf. The dog was dated to 14,223 years ago and was found buried along with a man and a woman, all three having been sprayed with red hematite powder and buried under large, thick basalt blocks. The dog had died of canine distemper. Earlier remains dating back to 30,000 years ago have been described as Paleolithic dogs but their status as dogs or wolves remains debated because considerable morphological diversity existed among wolves during the Late Pleistocene',
-    user_id: 4,
+    user_id: 5,
     createdAt: new Date(),
     updatedAt: new Date(),
     },
