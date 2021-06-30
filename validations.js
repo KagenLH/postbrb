@@ -55,7 +55,7 @@ const signupValidators = [
 const loginValidators = [
   check("email")
     .exists({ checkFalsy: true })
-    .withMessage("Must provide an email for signup.")
+    .withMessage("Must provide an email for login.")
     .custom((value) => {
       return User.findOne({ where: { email: value } }).then((user) => {
         if (!user) {
@@ -65,7 +65,7 @@ const loginValidators = [
     }),
   check("password")
     .exists({ checkFalsy: true })
-    .withMessage("Must provide a password for signup.")
+    .withMessage("Must provide a password for login.")
     .custom((value, { req }) => {
       return User.findOne({ where: { email: req.body.email } }).then((user) => {
         if (user) {

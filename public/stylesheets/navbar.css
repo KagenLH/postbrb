@@ -1,28 +1,71 @@
 #navbar {
     position: fixed;
-    background-color: rgb(12, 12, 154); 
+    background-color: rgb(12, 12, 154);
     width: 100%;
     height: 8%;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between;
 }
+
+.navbar-end {
+  display: flex;
+}
+
 .nav-buttons {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-right: 25px;
 }
 .auth-buttons {
    border-radius: 80px;
-   width: 75px;
-   color: rgb(0, 0, 0);
-   background-color: lightblue;
+   width: 150px;
+   color: rgb(59, 58, 58);
+   background-color: blue;
    text-align: center;
    text-decoration: none;
+   font-weight: bold;
+   transition: background-color 0.25s;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   color: white;
 }
 
 .auth-buttons:hover {
     cursor: pointer;
-    background-color: aqua;
+    background-color: cornflowerblue;
 }
+
+.user-info-tray {
+  color: rgb(211, 208, 208);
+  margin-right: 25px;
+}
+
+.user-info__text {
+  font-weight: bold;
+} 
+
+#auth-logout-button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logout-link {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-logo {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  width: 20%;
+  /* border-bottom: 2px solid rgb(12, 12, 154); */
+  cursor: pointer;
+  background-color: white;
+}
+
 
