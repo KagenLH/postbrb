@@ -7,6 +7,7 @@ html
         link(rel='stylesheet' href='/stylesheets/signup-form.css')
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/login-form.css')
+        link(rel='stylesheet' href='/stylesheets/story-form.css')
   body
     div#navbar
       div.nav-buttons
@@ -14,8 +15,8 @@ html
         if locals.authenticated
           a(href="/users/logout").auth-buttons Logout
         else
-          a(href="/users/login").auth-buttons Login 
-          a(href="/users/login/demo").auth-buttons Demo 
+          a(href="/users/login").auth-buttons Login
+          a(href="/users/login/demo").auth-buttons Demo
           a(href="/users/signup").auth-buttons Signup
-      
+
     block content
