@@ -26,6 +26,8 @@
    text-decoration: none;
    font-weight: bold;
    transition: background-color 0.25s;
+   padding-top: 2px;
+   padding-bottom: 2px;
    color: white;
 }
 
