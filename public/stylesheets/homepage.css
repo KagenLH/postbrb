@@ -10,26 +10,26 @@
 p {
     font-size: 15px;
 }
-
+/* 
 .border {
-
     position: relative;
-    border: 2px dotted rgba(154, 197, 235, 3);
+    border: 2px; 
+    border-style: dotted; 
+    border-color: rgba(154, 197, 235, 3);
     border-radius: 40px;
     margin-left: 10px;
     margin-right: 40px;
-    margin-top: 40px;
-    
-    
-
-}
+    margin-top: 40px; 
+} */
 .container__stories{
     position: fixed;
     display: flex;
     flex-direction: column;
     max-width: 1000px;
-    top: 70%;
-    left: 50%;
+    margin-right: 50%;
+    margin-left: 50%;
+    margin-top: 25%;
+    margin-bottom: 300%;
     transform: translate(-50%, -50%);
     
 }
