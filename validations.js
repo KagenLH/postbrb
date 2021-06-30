@@ -1,5 +1,5 @@
 const { check, validationResults } = require("express-validator");
-const { User } = require("./db/models");
+const { User, Story } = require("./db/models");
 const { checkPassword } = require("./routes/utils");
 
 const signupValidators = [
@@ -79,7 +79,21 @@ const loginValidators = [
     }),
 ];
 
+
+const storyValidators = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Must provide a title for the story.")
+    .isLength({ max: 100 })
+    .withMessage("Title must be less than 100 characters"),
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Must provide content for the story."),
+]
+
+
 module.exports = {
   signupValidators,
   loginValidators,
+  storyValidators,
 };

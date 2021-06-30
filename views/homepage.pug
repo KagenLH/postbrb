@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    div(class="container__stories")
+        h1 Postbrb is a place to post and read stories
+        a(href="/" class="btn btn-start") Start Here
+
+        each story in stories
+            div(class="overall-box")
+                div(class="story-box")
+                    h4(class="story-title")=story.title
+                    div(class="story-byAuthor")=story.User.username
+                    div(class="story-description")=story.content.slice(0, 30)
+                    div(class="story-date")=story.createdAt
+                    a(href=`/stories/${story.id}` class="btn btn-more") Read More
+        //- article(class="homepage__stories")
+        //-     h2= //title of story
+        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story1
+        //- article(class="homepage__stories")
+        //-     h2= //title of story
+        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story2
+        //- article(class="homepage__stories")
+        //-     h2= //title of story
+        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story3
