@@ -78,3 +78,5 @@ router.delete('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandle
     }
 
 }))
+
+module.exports= router
