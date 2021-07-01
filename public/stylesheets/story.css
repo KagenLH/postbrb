@@ -82,7 +82,7 @@
    display: flex;
    justify-content: space-between;
 }
- 
+
 #story_update{
     display: flex;
     justify-content: center;
@@ -105,12 +105,12 @@
 }
 
 #story_update:hover{
-    cursor: pointer; 
+    cursor: pointer;
     background-color:cornflowerblue;
 }
 #story_trash {
-    float: right; 
-    width:25px; 
+    float: right;
+    width:25px;
     height:29px;
 }
 
@@ -135,6 +135,7 @@
     top: 8%;
     right: 5px;
     overflow-y: scroll;
+    overflow-x: hidden;
     width: 350px;
     box-sizing: border-box;
     padding: 10px;
@@ -152,3 +153,14 @@
 
 }
 
+.comment__title{
+    display: flex;
+    justify-content: center;
+
+}
+
+.comment__comment-title{
+    padding-left: 5px;
+    font-size: 35px;
+
+}
