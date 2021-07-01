@@ -1,6 +1,6 @@
 
 .header{
-    position: fixed;
+    position: relative;
     margin-top: 90px;
     font-size: 36px;
     margin-bottom: 20px;
@@ -13,6 +13,7 @@ p {
     font-size: 15px;
 }
 
+
 /* .border {
     position: relative;
     border: 2px;
@@ -24,15 +25,10 @@ p {
     margin-top: 40px;
 } */
 .container__stories{
-    position: fixed;
+    position: relative;
     display: flex;
     flex-direction: column;
     max-width: 1000px;
-    margin-right: 50%;
-    margin-left: 50%;
-    margin-top: 25%;
-    margin-bottom: 300%;
-    transform: translate(-50%, -50%);
     height: 550px;
     overflow: auto;
 }
@@ -63,14 +59,21 @@ p {
 
 }
 
-.btn-start{
+.button-containter{
     box-sizing: border-box;
     padding: 10px;
     border: 2px solid rgba(89, 89, 255, 0.329);
     border-radius: 30px;
-    margin: 10px;
+    margin-top: 25px;
+
 }
 
+.btn-start{
+    text-decoration: none;
+}
+.button-containter:hover{
+    background-color: rgba(89, 89, 255, 0.808);;
+}
 
 .story-title{
     margin-top: 25px;
@@ -83,7 +86,6 @@ p {
 
 .story-detail{
 
-    width: 200x;
     color:rgb(146, 151, 159);
     margin-bottom: -10px;
     display: flexbox;
@@ -101,4 +103,24 @@ p {
     /*
     margin-left: 20px; */
 
+}
+
+.heading-container{
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.logoName{
+
+    margin-top: 25px;
+    width: 358px;
+    height: 81px;
+}
+.classy-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
