@@ -9,6 +9,6 @@ block content
         label(for="title") Story Title
         input(type="text" name="title" id="story-form__title" value=title required)
         label(for="content") Tell your story
-        textarea(name="content" id="story-form__content" rows="20" cols="100" value=content )
+        textarea(name="content" id="story-form__content" rows="20" cols="100" required) #{content}
         button(type="submit" class="publish") Publish Updated Story
         a(href="/" class="trash_button") Cancel
