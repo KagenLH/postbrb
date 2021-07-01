@@ -13,13 +13,14 @@ const Op = Sequelize.Op;
 
 router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
     const story_id = req.params.sid;
+    const user_id = req.session.auth.userId;
 
     const comments = await Comment.findAll({
         where:{story_id},
         order: [['createdAt','DESC']],
         include: User,
     });
-    res.json({comments})
+    res.json({comments, user_id})
 }))
 
 router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
