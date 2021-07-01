@@ -28,7 +28,7 @@ p {
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
+    max-width: 1600px;
     height: 550px;
     overflow: auto;
 }
