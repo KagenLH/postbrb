@@ -14,24 +14,31 @@ router.get('/new', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
 
 
 router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
+    if(req.session.auth){
     const userId = req.session.auth.userId
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId, {
         include: User
     });
-    
-
     res.render('story', {story, userId})
+    } else {
+        //const userId = parseInt(req.params.user_id)
+        const storyId = parseInt(req.params.id, 10);
+        const story = await Story.findByPk(storyId, {
+            include: User
+        });
+        res.render('story', {story})
+    }
 }));
 
 
 router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(async(req,res) => {
-    const { title, content } = req.body;
-
+    const { title, content} = req.body;
+    const user_id = req.session.auth.userId
     const validationErrors = validationResult(req)
 
     if(validationErrors.isEmpty()){
-        const user_id = req.session.auth.userId;
+        
         await Story.create({title, content, user_id})
 
         return res.redirect('/')
@@ -61,8 +68,8 @@ router.post('/:id(\\d+)/update', csrfProtection, requireAuth, storyValidators, a
         const storyId = parseInt(req.params.id, 10)
         // check if way 2 works if this doesn't 
         const updatedStory = await Story.findByPk(storyId)
-        story.title = title 
-        story.content = content 
+        updatedStory.title = title 
+        updatedStory.content = content 
         await updatedStory.save()
         res.redirect('/') // maybe we redirect to the page of the updated story  (story/:id)
    } else {

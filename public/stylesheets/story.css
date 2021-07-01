@@ -79,6 +79,8 @@
 }
 .story-update-delete{
    margin-top: 50px;
+   display: flex;
+   justify-content: space-between;
 }
  
 #story_update{
@@ -98,10 +100,8 @@
 #update-button{
     text-decoration: none;
     font-weight: bold;
-    padding-left: 120px;
-    /* padding-right: 50%; */
-
-
+    padding-left: 137px;
+    padding-top: 4px;
 }
 
 #story_update:hover{
@@ -111,6 +111,6 @@
 #story_trash {
     float: right; 
     width:25px; 
-    height:29px
-    
+    height:29px;
 }
+

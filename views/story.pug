@@ -15,12 +15,13 @@ block content
             div.story__content-body
                 div.story__container
                     article.story__content= story.content
-
-                        div.story-update-delete 
-                            div#story_update
-                                a#update-button(href=`/stories/${story.id}/update`) Update                             
-                            form#story_trash(type="submit" src="/assets/images/trash.png")
-                                input(type="image" src="/assets/images/trash.png")
+                        if userId === story.User.id
+                            div.story-update-delete 
+                                div#story_update
+                                    a#update-button(href=`/stories/${story.id}/update`) Update                               
+                                form#story_trash(method="POST" action=`/stories/${story.id}/delete` type="submit" src="/assets/images/trash.png")
+                                    input.trash(type="image" src="/assets/images/trash.png")
+                     
                                    
                            
                             
