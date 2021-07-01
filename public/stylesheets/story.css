@@ -77,6 +77,43 @@
     font-family: Arial, Helvetica, sans-serif;
     white-space: pre-wrap;
 }
+.story-update-delete{
+   margin-top: 50px;
+   display: flex;
+   justify-content: space-between;
+}
+
+#story_update{
+    display: flex;
+    justify-content: center;
+    border: none;
+    color: white;
+    border-radius: 80px;
+    background-color: blue;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    transition: background-color 0.25s;
+    width: 70px;
+
+}
+
+#update-button{
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 0px;
+    padding-top: 4px;
+}
+
+#story_update:hover{
+    cursor: pointer;
+    background-color:cornflowerblue;
+}
+#story_trash {
+    float: right;
+    width:25px;
+    height:29px;
+}
+
 
 .commentIcon{
     height: 10px;
@@ -98,7 +135,9 @@
     top: 8%;
     right: 5px;
     overflow-y: scroll;
-    width: 350px;
+    overflow-x: hidden;
+    width: 18.23%;
+    height: 800px;
     box-sizing: border-box;
     padding: 10px;
     border: 2px solid rgba(89, 89, 255, 0.329);
@@ -114,6 +153,15 @@
     width: 45px;
 
 }
+
+.comment__title{
+    display: flex;
+    justify-content: center;
+
+}
+
 .comment__comment-title{
+    padding-left: 5px;
+    font-size: 35px;
 
 }
