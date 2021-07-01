@@ -11,10 +11,8 @@ const { commentValidators } = require("../validations");
 
 const Op = Sequelize.Op;
 
-router.get('/comments', asyncHandler(async (req,res) => {
-
-    // need to grab the story_id from the story im at
-    // const story_id = ...
+router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
+    const story_id = req.params.sid;
 
     const comments = await Comment.findAll({
         where:{story_id},
@@ -24,47 +22,58 @@ router.get('/comments', asyncHandler(async (req,res) => {
     res.json({comments})
 }))
 
-router.get('/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
-    // TODO: find a way to handle this route to only work with the comments of a user
-    comment_id = req.params.id;
+router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
+
+    const story_id = req.params.sid; //might not need it
+    const comment_id = req.params.id;
+    const user_id = req.session.auth.userId;
     const comment = await Comment.findByPk(comment_id);
-    res.json({comment})
+
+    if(comment.user_id === user_id){
+        return res.json({comment})
+    } else {
+        return
+    }
 }))
 
-router.post('/comments/new', requireAuth ,commentValidators, asyncHandler(async (req,res) => { //need requireAuth??
-    // need to grab the story_id and user_id from the story im at
-    // const story_id = ... const user_id = ...
+router.post('/stories/:sid(\\d+)/comments/new', requireAuth ,commentValidators, asyncHandler(async (req,res) => { //need requireAuth??
 
+    const story_id = req.params.sid;
+    const user_id = req.session.auth.userId;
     const validationErrors = validationResult(req);
 
     if(validationErrors.isEmpty()){
         await Comment.create({story_id, user_id, content})
-        // not sure if to return comment or all comments
-        //res.json()
-
+        //TODO
+        // Call the fetchComments again on the front end to display all the comments
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
         res.json({errors});
     }
 }))
 
-router.put('/comments/:id(\\d+)', requireAuth, asyncHandler( async (req,res) => { //need requireAuth??
+router.put('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler( async (req,res) => { //need requireAuth??
 
     const {content} = req.body;
     const comment_id = req.params.id;
     const comment = await Comment.findByPk(comment_id);
     await comment.update({content});
 
-    // not sure if to return comment or all comments
-    //res.json()
+    //TODO
+    // call the fetchComments again on the front end
 }))
 
-router.delete('/comments/:id(\\d+)', requireAuth, asyncHandler((req,res) => {
-// TODO: find a way to handle this route to only work with the comments of a user
+router.delete('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler( async (req,res) => {
 
     const comment_id = req.params.id;
     const comment = await Comment.findByPk(comment_id);
-    Comment.destroy();
 
-    //not sure what to res
+    const user_id = req.session.auth.userId;
+
+    if(comment.user_id === user_id){
+        Comment.destroy();
+    } else {
+        return
+    }
+
 }))
