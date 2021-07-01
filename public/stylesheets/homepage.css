@@ -29,16 +29,16 @@ p {
     display: flex;
     flex-direction: column;
     /* max-width: 1600px; */
-    width: 1600px;
+    width: 80%;
     padding: 10px;
-    height: 650px;
+    height: 65%;
     overflow: auto;
     box-sizing: border-box;
 }
 
 .overall-box{
 
-    width: 1565px;
+    width: 100%;
     padding: 10px;
     box-sizing: border-box;
     border: 2px solid cornflowerblue;
@@ -118,8 +118,9 @@ p {
 }
 
 .logoName{
-    width: 358px;
-    height: 81px;
+    /* width: 358px; */
+    width: 19%;
+    height: 15%;
 }
 .classy-container{
     position: fixed;
