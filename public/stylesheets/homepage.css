@@ -1,0 +1,126 @@
+
+.header{
+    position: relative;
+    margin-top: 90px;
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    width: 100%;
+
+}
+
+p {
+    font-size: 15px;
+}
+
+
+/* .border {
+    position: relative;
+    border: 2px;
+    border-style: dotted;
+    border-color: rgba(154, 197, 235, 3);
+    border-radius: 40px;
+    margin-left: 10px;
+    margin-right: 40px;
+    margin-top: 40px;
+} */
+.container__stories{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    height: 550px;
+    overflow: auto;
+}
+
+.overall-box{
+
+    width: 700px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid rgba(89, 89, 255, 0.329);
+    border-radius: 5px;
+    margin: 2.5px;
+    cursor: pointer;
+
+
+}
+
+.overall-box:hover{
+    background-color:rgba(130, 174, 255, 0.349);
+
+}
+
+
+.button-read{
+
+    float:right;
+    text-decoration: none;
+
+}
+
+.button-containter{
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid rgba(89, 89, 255, 0.329);
+    border-radius: 30px;
+    margin-top: 25px;
+
+}
+
+.btn-start{
+    text-decoration: none;
+}
+.button-containter:hover{
+    background-color: rgba(89, 89, 255, 0.808);;
+}
+
+.story-title{
+    margin-top: 25px;
+    font-weight: bolder;
+    font-size: 20px;
+
+
+}
+
+
+.story-detail{
+
+    color:rgb(146, 151, 159);
+    margin-bottom: -10px;
+    display: flexbox;
+    flex-direction: column;
+
+
+}
+
+.avatarIcon{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 5px;
+    /*
+    margin-left: 20px; */
+
+}
+
+.heading-container{
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.logoName{
+
+    margin-top: 25px;
+    width: 358px;
+    height: 81px;
+}
+.classy-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
