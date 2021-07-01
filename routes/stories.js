@@ -9,7 +9,7 @@ const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
 const { storyValidators } = require("../validations");
 
 router.get('/new', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
-    res.render('stories-form', { csrfToken: req.csrfToken() })
+    res.render('story-form', { csrfToken: req.csrfToken() })
 }));
 
 
@@ -31,13 +31,13 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
     if(validationErrors.isEmpty()){
         const user_id = req.session.auth.userId;
         await Story.create({title, content, user_id})
-        
+
         return res.redirect('/')
     } else {
 
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('stories-form', {csrfToken: req.csrfToken(), errors, title, content})
-  
+        res.render('story-form', {csrfToken: req.csrfToken(), errors, title, content})
+
       }
 
 }))
@@ -45,8 +45,9 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
 router.get('/:id(\\d+)/update', csrfProtection, requireAuth, asyncHandler(async(req, res)=>{
     storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId)
+    const {id, title, content} = story
 
-    res.render('update-form',{csrfToken: req.csrfToken(), story}) 
+    res.render('story-update-form',{csrfToken: req.csrfToken(), id, title, content}) 
 
 }))
 
@@ -64,7 +65,7 @@ router.post('/:id(\\d+)/update', csrfProtection, requireAuth, storyValidators, a
         res.redirect('/') // maybe we redirect to the page of the updated story  (story/:id)
    } else {
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('update-form', {csrfToken: req.csrfToken(), errors, title, content})
+        res.render('story', {csrfToken: req.csrfToken(), errors, title, content})
    }
 }))
 

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .story__page-container
+        section.story__page
+            div.story__title-container
+                div.story__title
+                    h1.story__story-title= story.title
+                    div.story__publishing-container
+                        img.story__author-avatar(src=story.User.avatarUrl)
+                        div.story__publishing-details
+                            a.story__story-byAuthor(href=`/users/${story.User.id}`) Written by #{story.User.username}
+                            span.story__story-date Published on #{story.createdAt.toLocaleDateString()}
+                
+            div.story__content-body
+                div.story__container
+                    article.story__content= story.content
+
+                        div.story-update-delete 
+                            div#story_update
+                                a#update-button(href=`/stories/${story.id}/update`) Update                             
+                            form#story_trash(type="image" src="/assets/images/trash.png")
+                            

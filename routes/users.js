@@ -49,8 +49,8 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
     } else {
 
       const errors = validationErrors.array().map((error) => error.msg);
-      res.render('user-login', {csrfToken: req.csrfToken(), errors})
-
+      res.render('user-login', {csrfToken: req.csrfToken(), errors, email, password})
+   
     }
 
 
@@ -65,7 +65,7 @@ router.get('/logout', (req, res) => {
 
 // Process the signup form/request from the user and create a new user in the database
 router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req, res, next) => {
-  const { username, password, email, avatarUrl } = req.body;
+  const { username, password, confirmPassword, email, avatarUrl } = req.body;
 
   const validationErrors = validationResult(req);
 
@@ -78,9 +78,8 @@ router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req
 
   } else {
       const errors = validationErrors.array().map((error) => error.msg);
-
-
-      res.render('user-register', {csrfToken: req.csrfToken(), errors})
+   
+      res.render('user-register', { csrfToken: req.csrfToken(), errors, username, password, confirmPassword, email, avatarUrl})
   }
 }));
 

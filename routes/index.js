@@ -6,19 +6,13 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
 
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'a/A Express Skeleton Home' });
-// });
-
 router.get('/', asyncHandler( async (req,res) => {
 
   const stories = await Story.findAll({
     include: User
   });
 
-  res.render('index', { title: 'a/A Express Skeleton Home', stories});
-  // res.render('homepage', { title: 'a/A Express Skeleton Home', stories});
+  res.render('homepage', { stories });
 }));
 
 

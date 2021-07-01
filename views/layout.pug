@@ -1,21 +1,41 @@
 doctype html
 html
   head
-      block head
-        title="Express Starter App"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-        link(rel='stylesheet' href='/stylesheets/signup-form.css')
-        link(rel='stylesheet' href='/stylesheets/navbar.css')
-        link(rel='stylesheet' href='/stylesheets/login-form.css')
-  body
-    div#navbar
-      div.nav-buttons
-        //-a only sent by GET-//
-        if locals.authenticated
-          a(href="/users/logout").auth-buttons Logout
-        else
-          a(href="/users/login").auth-buttons Login 
-          a(href="/users/login/demo").auth-buttons Demo 
-          a(href="/users/signup").auth-buttons Signup
+
+    block head
+      title="PostBrb - Development Stories"
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/signup-form.css')
+      link(rel='stylesheet' href='/stylesheets/navbar.css')
+      link(rel='stylesheet' href='/stylesheets/login-form.css')
+      link(rel='stylesheet' href='/stylesheets/story-form.css')
+      link(rel='stylesheet' href='/stylesheets/homepage.css')
+      link(rel='stylesheet' href='/stylesheets/story.css')
+      link(rel='stylesheet' href='/stylesheets/index.css')
       
+
+  body
+    #navbar
+      .navbar-start
+        a(href="/")
+          img.nav-logo(src="/assets/images/postbrb-logo.png")
+      .navbar-end
+        if locals.authenticated
+          img.user-avatar.user-avatar-navbar(src=locals.user.avatarUrl)
+        div.nav-buttons
+          //-a only sent by GET-//
+          if locals.authenticated
+            div.user-info-tray
+              span.user-info__text Currently logged in as #{locals.user.username}.
+            div.auth-buttons#auth-logout-button
+              a(href="/users/logout").auth-logout-link Logout
+          else
+            a(href="/users/login").auth-buttons Login
+            a(href="/users/login/demo").auth-buttons Demo
+            a(href="/users/signup").auth-buttons Signup
     block content
+    footer.layout-footer
+      p.footer-container
+        span.footer-text Created by Jun, Steffano V , Diana B. Tinoco, and Kagen Hearn.
+        a(href="https://github.com/KagenLH/postbrb")
+          img.github-logo(src="/assets/images/github.png")

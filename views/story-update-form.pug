@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    if errors
+        each error in errors
+            li.login-error #{error}
+    form.story-form(action=`/stories/${id}/update` method="post" )
+        input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
+        label(for="title") Story Title
+        input(type="text" name="title" id="story-form__title" value=title required)
+        label(for="content") Tell your story
+        textarea(name="content" id="story-form__content" rows="20" cols="100" value=content )
+        button(type="submit" class="publish") Publish Updated Story
+        a(href="/" class="trash_button") Cancel
