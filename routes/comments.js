@@ -23,7 +23,7 @@ router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
     res.json({comments})
 }))
 
-
+// TODO: find a way to edit comments using this route
 router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
 
     const story_id = req.params.sid; //might not need it
@@ -75,7 +75,8 @@ router.delete('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandle
     const user_id = req.session.auth.userId;
 
     if(comment.user_id === user_id){
-        Comment.destroy();
+        comment.destroy();
+        res.json({});
     } else {
         return
     }

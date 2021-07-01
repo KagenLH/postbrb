@@ -47,13 +47,31 @@ const createComment = async (e) => {
 }
 
 
-const editComment = async (e) => {
+// const editComment = async (e) => {
+//     const id = document.querySelector('.story__title').id;  //this is the story_id
 
-    const res = await fetch(`http://localhost:8085/api/stories/id/comments/edit`, {
-        method: "PUT",  //all caps??
+//     const res = await fetch(`http://localhost:8085/api/stories/${e.id}/comments/edit`, {
+//         method: "PUT",
+//     });
+
+//     const {comment} = await res.json();
+// }
+
+
+const deleteComment = async (e) => {
+    const sid = document.querySelector('.story__title').id;  //this is the story_id
+    const id = e.id;
+    console.log('in tth function')
+    console.log(sid,e)
+    const res = await fetch(`http://localhost:8085/api/stories/${sid}/comments/${id}`, {
+        method: "DELETE",
     });
 
-    const {comment} = await res.json();
+    if (!res.ok) {
+        throw res;
+    }
+
+    const test = await res.json(); //does nothing
 }
 
 
@@ -76,25 +94,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     })
 
+    const deleteButton = document.querySelectorAll('.comment-delete');
+    deleteButton.forEach( button => {
+        button.addEventListener('click', async (e) => {
+            console.log('in event listener')
+            console.log(e)
+            try{
+                await deleteComment(e);
+                await fetchComments();
+            } catch(err) {
+                //how to handle error?
+            }
+
+        })
+    })
+
 })
-
-
-
-
-
-
-
-
-
-
-// const editButton = document.querySelectorAll('.comment-edit');
-// editButton.forEach(button => {
-//     button.addEventListener('click', async (e) => {
-//         try{
-//             await editComment();
-//         } catch(err) {
-//             //how to handle error?
-//         }
-
-//     })
-// })
