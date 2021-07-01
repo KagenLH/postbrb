@@ -4,21 +4,21 @@ const fetchComments = async () => {
     const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
     const {comments, user_id} = await res.json();
 
-    console.log(comments)
+  
 
     // TODO: find a way to use user_id to show or not the buttons
     const commentContainer = document.querySelector('.comment__section') //TODO, add class
+    
     const commentDivs = comments.map(( comment ) =>
         `<div class="comment">
-            <div class="comment-usernamer">
-                <img src='${comment.User.avatarUrl}' class="comment__avatarIcon">
-                <h4>${comment.User.username}</h4>
+            <div class="comment-username">
+                <img src='${comment.User.avatarUrl}' class="comment__avatarIcon"> ${comment.User.username}
             </div>
             <div class="comment-content">
                 <p>${comment.content}</p>
-            </div>
-            <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
-            <button class='comment-delete' id='${comment.id}' type='button'> delete </button>
+            </div class="edit-delete">
+                <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
+                <button class='comment-delete' id='${comment.id}' type='button'></button>
         </div>`
     );
     commentContainer.innerHTML = commentDivs.join('');

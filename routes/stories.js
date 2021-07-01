@@ -22,7 +22,6 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
     });
     res.render('story', {story, userId})
     } else {
-        //const userId = parseInt(req.params.user_id)
         const storyId = parseInt(req.params.id, 10);
         const story = await Story.findByPk(storyId, {
             include: User

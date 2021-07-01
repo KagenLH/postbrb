@@ -72,7 +72,7 @@ p {
     text-decoration: none;
 }
 .button-containter:hover{
-    background-color: rgba(89, 89, 255, 0.808);;
+    background-color: rgba(89, 89, 255, 0.808);
 }
 
 .story-title{
@@ -124,3 +124,4 @@ p {
     flex-direction: column;
     align-items: center;
 }
+

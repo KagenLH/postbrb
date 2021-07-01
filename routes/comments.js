@@ -12,7 +12,7 @@ const { commentValidators } = require("../validations");
 const Op = Sequelize.Op;
 
 router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
-
+  
     const story_id = req.params.sid;
 
     const comments = await Comment.findAll({
@@ -21,15 +21,17 @@ router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
         include: User,
     });
     res.json({comments})
+    
 }))
 
 // TODO: find a way to edit comments using this route
 router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
-
+    const {content} = comment
     const story_id = req.params.sid; //might not need it
     const comment_id = req.params.id;
     const user_id = req.session.auth.userId;
     const comment = await Comment.findByPk(comment_id);
+
 
     if(comment.user_id === user_id){
         return res.json({comment})
