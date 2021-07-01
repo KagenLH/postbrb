@@ -65,6 +65,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 const submitButton = document.querySelector('.postComment');
+submitButton.addEventListener('click', async (e) => {
+    try{
+        await makeComment(e);
+        await fetchComments();
+    }catch(err){
+        //how to handle error?
+    }
+})
 
 
 
