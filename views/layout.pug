@@ -27,8 +27,7 @@ html
           if locals.authenticated
             div.user-info-tray
               span.user-info__text Currently logged in as #{locals.user.username}.
-            div.auth-buttons#auth-logout-button
-              a(href="/users/logout").auth-logout-link Logout
+            a(href="/users/logout").auth-logout-link.auth-buttons#auth-logout-button Logout
           else
             a(href="/users/login").auth-buttons Login
             a(href="/users/login/demo").auth-buttons Demo

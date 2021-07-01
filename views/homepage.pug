@@ -17,8 +17,8 @@ block content
                     h4(class="story-title")= story.title
                     p.story-description=`${story.content.slice(0, 80).split(" ").slice(0,story.content.slice(0, 80).split(" ").length-1).join(" ")}...`
                         a(href=`/stories/${story.id}` class="button-read") Read More
-        div(class="button-containter")
-            a(href="/stories/new" class="btn-start") Start Here
+
+        a.button-containter(href="/stories/new" class="btn-start") Start Here
             //- if locals.authenticated
 
             //- else
