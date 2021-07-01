@@ -1,0 +1,79 @@
+.story__page-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* background-image: url("/assets/images/test.jpg"); */
+    background-color: rgb(212, 211, 211);
+}
+
+.story__page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 63%;
+    border-left: 2px solid darkgray;
+    border-right: 2px solid darkgray;
+    height: 92%;
+    overflow: scroll;
+}
+
+.story__title {
+    position: relative;
+    left: 10%;
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+.story__story-title {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+}
+
+.story__author-avatar {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.story__publishing-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 15px;
+}
+
+.story__publishing-container {
+    display: flex;
+}
+
+.story__story-byAuthor {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.story__title-container {
+    box-sizing: border-box;
+    position: relative;
+    top: 5%;
+    border-bottom: 2px dotted darkgray;
+}
+
+.story__content-body {
+    margin-top: 50px;
+    font-size: 16px;
+    padding: 50px;
+}
+
+.story__content {
+    font-size: 22px;
+    color: rgb(37, 37, 37);
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: pre-wrap;
+}

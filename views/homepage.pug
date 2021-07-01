@@ -1,24 +1,25 @@
 extends layout
+append head
+    script(src="/javascripts/index.js")
 
 block content
-    div(class="container__stories")
-        h1 Postbrb is a place to post and read stories
-        a(href="/" class="btn btn-start") Start Here
+    div(class="classy-container")
+        div(class="header")
+            div(class="heading-container")
+                img(src="/assets/images/postbrb_small.png" class="logoName")
 
-        each story in stories
-            div(class="overall-box")
-                div(class="story-box")
-                    h4(class="story-title")=story.title
-                    div(class="story-byAuthor")=story.User.username
-                    div(class="story-description")=story.content.slice(0, 30)
-                    div(class="story-date")=story.createdAt
-                    a(href=`/stories/${story.id}` class="btn btn-more") Read More
-        //- article(class="homepage__stories")
-        //-     h2= //title of story
-        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story1
-        //- article(class="homepage__stories")
-        //-     h2= //title of story
-        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story2
-        //- article(class="homepage__stories")
-        //-     h2= //title of story
-        //-         a(class="homepage__storiesLink" href=`stories/${story.id}`) story3
+        div(class="container__stories")
+            each story in stories
+                div(class="overall-box" id=`story-card-${story.id}`)
+                    img(src=story.User.avatarUrl class="avatarIcon")
+                    p.story-detail=`Author: ${story.User.username}`
+                    p.story-detail= `Published: ${story.createdAt.toLocaleDateString()}`
+                    h4(class="story-title")= story.title
+                    p.story-description=`${story.content.slice(0, 80).split(" ").slice(0,story.content.slice(0, 80).split(" ").length-1).join(" ")}...`
+                        a(href=`/stories/${story.id}` class="button-read") Read More
+        div(class="button-containter")
+            a(href="/stories/new" class="btn-start") Start Here
+            //- if locals.authenticated
+
+            //- else
+            //-     a(href="/users/login" class="btn-start") Start Here
