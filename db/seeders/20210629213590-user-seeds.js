@@ -10,8 +10,8 @@ module.exports = {
       */
    return queryInterface.bulkInsert('Users', [
      {
-      username:'test',
-      email: 'test@test.com',
+      username:'aleckeeler99',
+      email: 'aleckeeler@postbrb.com',
       hashedPassword: '$2a$10$zR2Fi5nXkNPH9occMIpHAeZMyfpnIUlt7ROI0uOeN2vf1G9vbl2Um',
       avatarUrl: '/assets/avatars/woman.png',
       createdAt: new Date(),
