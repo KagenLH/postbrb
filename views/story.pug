@@ -1,17 +1,29 @@
 extends layout
+append head
+    script(src="/javascripts/story_id.js")
 
 block content
     .story__page-container
         section.story__page
             div.story__title-container
-                div.story__title
+                div(class="story__title" id=`${story.id}`)
                     h1.story__story-title= story.title
                     div.story__publishing-container
                         img.story__author-avatar(src=story.User.avatarUrl)
                         div.story__publishing-details
                             a.story__story-byAuthor(href=`/users/${story.User.id}`) Written by #{story.User.username}
                             span.story__story-date Published on #{story.createdAt.toLocaleDateString()}
-                
+
             div.story__content-body
                 div.story__container
                     article.story__content= story.content
+    .comment__container
+        section.comment__page
+            div.comment__title-container
+                div.comment__title
+                    h1.comment__comment-title="Comments"
+                    div.comment__textbox-container
+                        //- form(action="" method="post" class="commentForm")
+                        //-     img.story__author-avatar(src=story.User.avatarUrl)
+                        //-     textarea()
+            div.comment__section

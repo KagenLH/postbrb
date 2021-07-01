@@ -1,14 +1,15 @@
 
 const fetchComments = async () => {
-
-    const res = await fetch(`http://localhost:8085/api/stories/id/comments`); //TODO: FIX URL
+    const idForStory = document.querySelector('.story__title');
+    const id = idForStory.id
+    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`); //TODO: FIX URL
     const {comments, user_id} = await res.json();
 
     console.log(comments)
 
     // find a way to use user_id to show or not the buttons
 
-    const commentContainer = document.querySelector('.') //TODO, add class
+    const commentContainer = document.querySelector('.comment__section') //TODO, add class
     const commentDivs = comments.map(( comment ) =>   // User or user?? or plural?
         `<div class="comment">
             <div class="comment-usernamer">
