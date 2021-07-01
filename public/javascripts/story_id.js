@@ -1,16 +1,15 @@
 
 const fetchComments = async () => {
-    const idForStory = document.querySelector('.story__title');
-    const id = idForStory.id
-    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`); //TODO: FIX URL
+    const id = document.querySelector('.story__title').id;  //this is the story_id
+    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
     const {comments, user_id} = await res.json();
 
-    console.log(comments)
+    //console.log(comments)
 
-    // find a way to use user_id to show or not the buttons
+    // TODO: find a way to use user_id to show or not the buttons
 
     const commentContainer = document.querySelector('.comment__section') //TODO, add class
-    const commentDivs = comments.map(( comment ) =>   // User or user?? or plural?
+    const commentDivs = comments.map(( comment ) =>
         `<div class="comment">
             <div class="comment-usernamer">
                 <h4>${comment.User.username}</h4>
@@ -26,8 +25,15 @@ const fetchComments = async () => {
     commentContainer.innerHTML = commentDivs.join('');
 }
 
-const makeComment = async () => {
-    const res = await fetch(``);
+const makeComment = async (e) => {
+    const id = document.querySelector('.story__title').id;  //this is the story_id
+
+    const commentForm = document.querySelector('.commentForm');
+
+    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments/new`,{
+        method: "post",  //all caps??
+
+    });
     const {comment} = await res.json();
 
 }
@@ -62,4 +68,3 @@ editButton.forEach(button => {
 
     })
 })
-

@@ -23,6 +23,7 @@ router.get('/stories/:sid(\\d+)/comments', asyncHandler(async (req,res) => {
     res.json({comments})
 }))
 
+
 router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHandler(async (req,res) => {
 
     const story_id = req.params.sid; //might not need it
