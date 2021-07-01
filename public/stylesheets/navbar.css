@@ -5,6 +5,7 @@
     height: 8%;
     display: flex;
     justify-content: space-between;
+    z-index: 99;
 }
 
 .navbar-end {

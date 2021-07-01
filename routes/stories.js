@@ -19,7 +19,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
         include: User
     });
 
-    res.render('', {story})
+    res.render('story.pug', {story})
 }));
 
 

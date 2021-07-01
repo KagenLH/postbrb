@@ -1,20 +1,20 @@
 extends layout
 
 block content
-
-    div(class="header")
-        h1(class="heading") Postbrb is a place to post and read stories...
-            p signup to write your own 
-        if locals.authenticated
-            a(href="/stories/new" class="btn-start") Start Here
-        else
-            a(href="/users/login" class="btn-start") Start Here
-            p.border
-    div(class="container__stories")
-        each story in stories
-            div(class="overall-box")
-                    h4(class="story-title")= story.title
-                    p.story-description=story.content.slice(0, 80)
-                   
-                    p.story-detail=`Aurthor: ${story.User.username}  ${story.createdAt.toLocaleDateString()}`
-                        a(href=`/stories/${story.id}` class="button-read") Read More
+    .homepage__container
+        div(class="header")
+            h1(class="heading") Postbrb is a place to post and read stories...
+                p signup to write your own 
+            if locals.authenticated
+                a(href="/stories/new" class="btn-start") Start Here
+            else
+                a(href="/users/login" class="btn-start") Start Here
+                p.border
+        div(class="container__stories")
+            each story in stories
+                div(class="overall-box")
+                        h4(class="story-title")= story.title
+                        p.story-description=story.content.slice(0, 80)
+                    
+                        p.story-detail=`Aurthor: ${story.User.username}  ${story.createdAt.toLocaleDateString()}`
+                            a(href=`/stories/${story.id}` class="button-read") Read More

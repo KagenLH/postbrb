@@ -1,12 +1,18 @@
 extends layout
 
 block content
-section(class="page")
-    div(class="title")
-        h1(class="story-title")= stories.title
-            div(class="story-byAuthor")=stories.User.username
-            div(class="story-date")=stories.createdAt.toLocaleDateString()
-                a(href=`/users/${user.id}`)
-    div(class="content-body")
-        div(class="wrapper")
-            p(class="content")=stories.User.content
+    .story__page-container
+        section.story__page
+            div.story__title-container
+                div.story__title
+                    h1.story__story-title= story.title
+                    div.story__publishing-container
+                        img.story__author-avatar(src=story.User.avatarUrl)
+                        div.story__publishing-details
+                            a.story__story-byAuthor(href=`/users/${story.User.id}`)= story.User.username
+                            span.story__story-date= story.createdAt.toLocaleDateString()
+                
+            div.story__content-body
+                div.story__container
+                    article
+                        pre.story__content= story.content
