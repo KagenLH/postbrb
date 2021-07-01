@@ -92,8 +92,18 @@ const storyValidators = [
 ]
 
 
+const commentValidators = [
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Must provide a comment for the story.")
+    .isLength({ max: 150 })
+    .withMessage("Title must be less than 100 characters"),
+]
+
+
 module.exports = {
   signupValidators,
   loginValidators,
   storyValidators,
+  commentValidators,
 };
