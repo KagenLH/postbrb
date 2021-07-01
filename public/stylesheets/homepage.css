@@ -1,8 +1,8 @@
 
 .header{
     position: relative;
-    margin-top: 35px;
     font-size: 36px;
+    margin-top: 65px;
     margin-bottom: 20px;
     margin-left: 15px;
     width: 100%;
@@ -62,6 +62,7 @@ p {
 }
 
 .button-containter{
+    position: relative;
     box-sizing: border-box;
     padding: 10px;
     border: 2px solid rgba(89, 89, 255, 0.329);
@@ -70,6 +71,7 @@ p {
     border-radius: 30px;
     margin-top: 25px;
     width: 160px;
+    margin-bottom: 65px;
 }
 
 .btn-start{
@@ -131,5 +133,5 @@ p {
     flex-direction: column;
     align-items: center;
     background-color: white;
-
+    margin-top: 20px;
 }
