@@ -40,6 +40,8 @@ router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHand
 
 router.post('/stories/:sid(\\d+)/comments/new', requireAuth ,commentValidators, asyncHandler(async (req,res) => { //need requireAuth??
 
+    console.log('inside the backend')
+
     const story_id = req.params.sid;
     const user_id = req.session.auth.userId;
     const {content} = req.body;
@@ -47,8 +49,7 @@ router.post('/stories/:sid(\\d+)/comments/new', requireAuth ,commentValidators, 
 
     if(validationErrors.isEmpty()){
         await Comment.create({story_id, user_id, content})
-        //TODO
-        // Call the fetchComments again on the front end to display all the comments
+        res.json({"test":"test"});
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
         res.json({errors});
