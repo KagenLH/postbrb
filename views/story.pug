@@ -30,7 +30,7 @@ block content
                     img.commentPic(src="/assets/images/commentHappy.png")
                     h1.comment__comment-title="Comments"
                 div.comment__textbox-container
-                    form(action="" method="post" class="commentForm")
+                    form(action=`/api/stories/${story.id}/comments/new` method="post" class="commentForm")
                         textarea(name="content" id="comment-form__content" rows="10" cols="40" value=comment placeholder="What are your thoughts?")
                         button(type="submit" class="postComment") Post
             div.comment__section

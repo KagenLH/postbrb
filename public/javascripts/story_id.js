@@ -4,14 +4,15 @@ const fetchComments = async () => {
     const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
     const {comments, user_id} = await res.json();
 
-    console.log(comments)
+  
 
     // TODO: find a way to use user_id to show or not the buttons
     const commentContainer = document.querySelector('.comment__section') //TODO, add class
+    
     const commentDivs = comments.map(( comment ) =>
         `<div class="comment">
-            <div class="comment-usernamer">
-                <h4>${comment.User.username}</h4>
+            <div class="comment-username">
+                <img src='${comment.User.avatarUrl}' class="comment__avatarIcon"> ${comment.User.username}
             </div>
             <div class="comment-content">
                 <p>${comment.content}</p>
@@ -24,7 +25,7 @@ const fetchComments = async () => {
 }
 
 
-const makeComment = async (e) => {
+const createComment = async (e) => {
     const id = document.querySelector('.story__title').id;  //this is the story_id
     const commentForm = document.querySelector('.commentForm');
     const formData = new FormData(commentForm);
@@ -32,24 +33,24 @@ const makeComment = async (e) => {
     const body = {content};
 
     const res = await fetch(`http://localhost:8085/api/stories/${id}/comments/new`,{
-        method: "post",  //all caps??
+        method: "POST",
         body: JSON.stringify(body),
         headers: {
             "Content-Type": "application/json"
         },
     });
+    const test = await res.json();  // needed so the db will store the comment before the next function displays all the comments.
     if (!res.ok) {
         throw res;
     }
     commentForm.reset();
-    // const {comment} = await res.json();
 }
 
 
 const editComment = async (e) => {
 
     const res = await fetch(`http://localhost:8085/api/stories/id/comments/edit`, {
-        method: "put",  //all caps??
+        method: "PUT",  //all caps??
     });
 
     const {comment} = await res.json();
@@ -57,26 +58,43 @@ const editComment = async (e) => {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+
     try{
         await fetchComments();
     } catch (err){
         //how to handle error?
     }
-})
 
-const submitButton = document.querySelector('.postComment');
-
-
-
-
-const editButton = document.querySelectorAll('.comment-edit');
-editButton.forEach(button => {
-    button.addEventListener('click', async (e) => {
+    const commentForm = document.querySelector('.commentForm');
+    commentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         try{
-            await editComment();
-        } catch(err) {
+            await createComment(e);
+            await fetchComments();
+        }catch(err){
             //how to handle error?
         }
-
     })
+
 })
+
+
+
+
+
+
+
+
+
+
+// const editButton = document.querySelectorAll('.comment-edit');
+// editButton.forEach(button => {
+//     button.addEventListener('click', async (e) => {
+//         try{
+//             await editComment();
+//         } catch(err) {
+//             //how to handle error?
+//         }
+
+//     })
+// })
