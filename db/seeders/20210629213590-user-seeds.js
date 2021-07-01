@@ -8,7 +8,16 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('Users', [], {});
+   return queryInterface.bulkInsert('Users', [
+     {
+      username:'demo',
+      email: 'demo@demo.com',
+      hashedPassword: '$2a$10$zR2Fi5nXkNPH9occMIpHAeZMyfpnIUlt7ROI0uOeN2vf1G9vbl2Um',
+      avatarUrl: '/assets/avatars/woman.png',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+   ], {});
   },
 
   down: (queryInterface, Sequelize) => {
