@@ -12,11 +12,12 @@ html
       link(rel='stylesheet' href='/stylesheets/homepage.css')
       link(rel='stylesheet' href='/stylesheets/story.css')
       link(rel='stylesheet' href='/stylesheets/index.css')
+      
 
   body
     #navbar
       .navbar-start
-        a(href="/") 
+        a(href="/")
           img.nav-logo(src="/assets/images/postbrb-logo.png")
       .navbar-end
         if locals.authenticated
@@ -24,18 +25,17 @@ html
         div.nav-buttons
           //-a only sent by GET-//
           if locals.authenticated
-            div.user-info-tray 
+            div.user-info-tray
               span.user-info__text Currently logged in as #{locals.user.username}.
             div.auth-buttons#auth-logout-button
               a(href="/users/logout").auth-logout-link Logout
           else
-            a(href="/users/login").auth-buttons Login 
-            a(href="/users/login/demo").auth-buttons Demo 
+            a(href="/users/login").auth-buttons Login
+            a(href="/users/login/demo").auth-buttons Demo
             a(href="/users/signup").auth-buttons Signup
     block content
-    footer.layout-footer 
+    footer.layout-footer
       p.footer-container
-        span.footer-text Created by Jun, Steffano V , Diana B. Tinoco, and Kagen Hearn. 
+        span.footer-text Created by Jun, Steffano V , Diana B. Tinoco, and Kagen Hearn.
         a(href="https://github.com/KagenLH/postbrb")
           img.github-logo(src="/assets/images/github.png")
-

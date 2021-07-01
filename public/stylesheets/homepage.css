@@ -1,19 +1,19 @@
 
 .header{
     position: fixed;
-    margin-top: 70px;
+    margin-top: 90px;
     font-size: 36px;
     margin-bottom: 20px;
     margin-left: 15px;
     width: 100%;
-    
+
 }
 
 p {
     font-size: 15px;
 }
-/*
-.border {
+
+/* .border {
     position: relative;
     border: 2px;
     border-style: dotted;
@@ -45,17 +45,21 @@ p {
     border: 2px solid rgba(89, 89, 255, 0.329);
     border-radius: 5px;
     margin: 2.5px;
+    cursor: pointer;
 
 
 }
 
 .overall-box:hover{
     background-color:rgba(130, 174, 255, 0.349);
+
 }
+
 
 .button-read{
 
     float:right;
+    text-decoration: none;
 
 }
 
@@ -69,8 +73,9 @@ p {
 
 
 .story-title{
-    margin-top: 15px;
+    margin-top: 25px;
     font-weight: bolder;
+    font-size: 20px;
 
 
 }
@@ -80,8 +85,20 @@ p {
 
     width: 200x;
     color:rgb(146, 151, 159);
-    margin-bottom: 20px;
+    margin-bottom: -10px;
     display: flexbox;
     flex-direction: column;
+
+
+}
+
+.avatarIcon{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 5px;
+    /*
+    margin-left: 20px; */
 
 }
