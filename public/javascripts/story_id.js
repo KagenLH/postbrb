@@ -15,9 +15,9 @@ const fetchComments = async () => {
             </div>
             <div class="comment-content">
                 <p>${comment.content}</p>
-            </div>
-            <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
-            <button class='comment-delete' id='${comment.id}' type='button'> delete </button>
+            </div class="edit-delete">
+                <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
+                <button class='comment-delete' id='${comment.id}' type='button'></button>
         </div>`
     );
     commentContainer.innerHTML = commentDivs.join('');
