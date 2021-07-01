@@ -1,6 +1,12 @@
+.homepage__stories-container {
+    position: absolute;
+    display: flex; 
+    flex-direction: column;
+    top: 10%;
+}
+
 .header{
-    position: fixed;
-    margin-top: 70px;
+    position: relative;
     font-size: 36px;
     margin-bottom: 20px;
     margin-left: 15px;
@@ -24,11 +30,10 @@ p {
 
 }
 .container__stories{
-    position: fixed;
+    position: relative;
     display: flex;
     flex-direction: column;
     max-width: 1000px;
-    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: scroll;

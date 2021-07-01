@@ -9,10 +9,9 @@ block content
                     div.story__publishing-container
                         img.story__author-avatar(src=story.User.avatarUrl)
                         div.story__publishing-details
-                            a.story__story-byAuthor(href=`/users/${story.User.id}`)= story.User.username
-                            span.story__story-date= story.createdAt.toLocaleDateString()
+                            a.story__story-byAuthor(href=`/users/${story.User.id}`) Written by #{story.User.username}
+                            span.story__story-date Published on #{story.createdAt.toLocaleDateString()}
                 
             div.story__content-body
                 div.story__container
-                    article
-                        pre.story__content= story.content
+                    article.story__content= story.content
