@@ -59,8 +59,8 @@ router.post('/:id(\\d+)/update', csrfProtection, requireAuth, storyValidators, a
         const storyId = parseInt(req.params.id, 10)
         // check if way 2 works if this doesn't 
         const updatedStory = await Story.findByPk(storyId)
-        story.title = title 
-        story.content = content 
+        updatedStory.title = title 
+        updatedStory.content = content 
         await updatedStory.save()
         res.redirect('/') // maybe we redirect to the page of the updated story  (story/:id)
    } else {
