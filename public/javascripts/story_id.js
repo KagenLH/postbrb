@@ -4,7 +4,7 @@ const fetchComments = async () => {
     const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
     const {comments, user_id} = await res.json();
 
-    //console.log(comments)
+    console.log(comments)
 
     // TODO: find a way to use user_id to show or not the buttons
     const commentContainer = document.querySelector('.comment__section') //TODO, add class
