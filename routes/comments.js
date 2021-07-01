@@ -42,6 +42,7 @@ router.post('/stories/:sid(\\d+)/comments/new', requireAuth ,commentValidators, 
 
     const story_id = req.params.sid;
     const user_id = req.session.auth.userId;
+    const {content} = req.body;
     const validationErrors = validationResult(req);
 
     if(validationErrors.isEmpty()){
