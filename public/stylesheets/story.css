@@ -136,7 +136,8 @@
     right: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 350px;
+    width: 18.23%;
+    height: 800px;
     box-sizing: border-box;
     padding: 10px;
     border: 2px solid rgba(89, 89, 255, 0.329);
