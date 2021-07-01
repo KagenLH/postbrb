@@ -2,7 +2,7 @@
     position: fixed;
     background-color: rgb(12, 12, 154);
     width: 100%;
-    height: 80px;
+    height: 75px;
     display: flex;
 
     justify-content: space-between;
@@ -62,8 +62,8 @@
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
-  height: 100%;
-  width: 20%;
+  height: 75px;
+  width: 100px;
   /* border-bottom: 2px solid rgb(12, 12, 154); */
   cursor: pointer;
   background-color: white;
