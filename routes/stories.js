@@ -14,12 +14,14 @@ router.get('/new', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
 
 
 router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
+    const userId = req.session.auth.userId
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId, {
         include: User
     });
     
-    res.render('story', {story})
+
+    res.render('story', {story, userId})
 }));
 
 
@@ -43,7 +45,7 @@ router.post('/new', csrfProtection, requireAuth, storyValidators, asyncHandler(a
 }))
 
 router.get('/:id(\\d+)/update', csrfProtection, requireAuth, asyncHandler(async(req, res)=>{
-    storyId = parseInt(req.params.id, 10);
+    const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId)
     const {id, title, content} = story
 
@@ -69,11 +71,17 @@ router.post('/:id(\\d+)/update', csrfProtection, requireAuth, storyValidators, a
    }
 }))
 
-router.post('/:id(\\d+)/delete',  csrfProtection, requireAuth, asyncHandler(async(req, res)=> {
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res)=> {
+
+    
+
     const storyId = parseInt(req.params.id, 10);
     const story = await Story.findByPk(storyId);
-    story.destroy(); 
-    res.redirect('/') // do we need to pass token?
+    await story.destroy(); 
+    res.redirect('/')
+
+    
+     // do we need to pass token?
 }))
 
 module.exports = router;
