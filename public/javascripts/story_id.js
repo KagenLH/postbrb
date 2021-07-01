@@ -4,7 +4,7 @@ const fetchComments = async () => {
     const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
     const {comments, user_id} = await res.json();
 
-    //console.log(comments)
+    console.log(comments)
 
     // TODO: find a way to use user_id to show or not the buttons
 
@@ -18,7 +18,7 @@ const fetchComments = async () => {
                 <p>${comment.content}</p>
             </div>
             <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
-            <button class='comment-delete id='${comment.id}' type='button'> delete </button>
+            <button class='comment-delete' id='${comment.id}' type='button'> delete </button>
         </div>`
     );
 
