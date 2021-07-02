@@ -42,8 +42,6 @@ router.get('/stories/:sid(\\d+)/comments/:id(\\d+)/edit', requireAuth, asyncHand
 
 router.post('/stories/:sid(\\d+)/comments/new', requireAuth ,commentValidators, asyncHandler(async (req,res) => { //need requireAuth??
 
-    console.log('inside the backend')
-
     const story_id = req.params.sid;
     const user_id = req.session.auth.userId;
     const {content} = req.body;
@@ -70,8 +68,6 @@ router.put('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler( 
 }))
 
 router.delete('/stories/:sid(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler( async (req,res) => {
-
-    console.log('in route');
 
     const comment_id = req.params.id;
     const comment = await Comment.findByPk(comment_id);
