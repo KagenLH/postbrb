@@ -1,8 +1,9 @@
 extends layout
 append head
-    script(src="/javascripts/story_id.js")
+    script(src="/javascripts/story_id.js" type='module')
 
 block content
+    input(type="hidden" value=url id='hidden-url')
     .story__page-container
         section.story__page
             div.story__title-container

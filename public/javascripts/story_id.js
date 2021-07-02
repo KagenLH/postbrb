@@ -1,16 +1,15 @@
 
-const fetchComments = async () => {
-    const id = document.querySelector('.story__title').id;  //this is the story_id
-    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments`);
-    const {comments, user_id} = await res.json();
+const fetchComments = async (url) => {
 
-  
+    const id = document.querySelector('.story__title').id;  //this is the story_id
+    const res = await fetch(`${url}/api/stories/${id}/comments`);
+    const {comments, user_id} = await res.json();
 
     // TODO: find a way to use user_id to show or not the buttons
     const commentContainer = document.querySelector('.comment__section') //TODO, add class
-    
+
     const commentDivs = comments.map(( comment ) =>
-        `<div class="comment">
+        `<div class="comment" id='comment-${comment.id}'>
             <div class="comment-username">
                 <img src='${comment.User.avatarUrl}' class="comment__avatarIcon"> ${comment.User.username}
             </div>
@@ -22,17 +21,32 @@ const fetchComments = async () => {
         </div>`
     );
     commentContainer.innerHTML = commentDivs.join('');
+
+    const deleteButton = document.querySelectorAll('.comment-delete');
+    deleteButton.forEach( button => {
+        button.addEventListener('click', async (e) => {
+            // console.log('in event listener')
+            console.log(e)
+            console.log(e.target.id)
+            try{
+                await deleteComment(e.target.id,url);
+            } catch(err) {
+                //how to handle error?
+            }
+
+        })
+    })
 }
 
 
-const createComment = async (e) => {
+const createComment = async (e, url) => {
     const id = document.querySelector('.story__title').id;  //this is the story_id
     const commentForm = document.querySelector('.commentForm');
     const formData = new FormData(commentForm);
     const content = formData.get('content');
     const body = {content};
 
-    const res = await fetch(`http://localhost:8085/api/stories/${id}/comments/new`,{
+    const res = await fetch(`${url}/api/stories/${id}/comments/new`,{
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -49,36 +63,33 @@ const createComment = async (e) => {
 
 // const editComment = async (e) => {
 //     const id = document.querySelector('.story__title').id;  //this is the story_id
-
 //     const res = await fetch(`http://localhost:8085/api/stories/${e.id}/comments/edit`, {
 //         method: "PUT",
 //     });
-
 //     const {comment} = await res.json();
 // }
 
 
-const deleteComment = async (e) => {
+const deleteComment = async (commentId,url) => {
     const sid = document.querySelector('.story__title').id;  //this is the story_id
-    const id = e.id;
-    console.log('in tth function')
-    console.log(sid,e)
-    const res = await fetch(`http://localhost:8085/api/stories/${sid}/comments/${id}`, {
+    console.log('in delete function')
+    console.log(sid,commentId)
+    const res = await fetch(`${url}/api/stories/${sid}/comments/${commentId}`, {     // change URL FOR DEPLOYMENT
         method: "DELETE",
     });
 
     if (!res.ok) {
         throw res;
     }
-
-    const test = await res.json(); //does nothing
+    document.querySelector(`#comment-${commentId}`).remove();
 }
 
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    const url = document.querySelector('#hidden-url').value;
     try{
-        await fetchComments();
+        await fetchComments(url);
     } catch (err){
         //how to handle error?
     }
@@ -87,26 +98,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     commentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         try{
-            await createComment(e);
-            await fetchComments();
+            await createComment(e, url);
+            await fetchComments(url);
         }catch(err){
             //how to handle error?
         }
-    })
-
-    const deleteButton = document.querySelectorAll('.comment-delete');
-    deleteButton.forEach( button => {
-        button.addEventListener('click', async (e) => {
-            console.log('in event listener')
-            console.log(e)
-            try{
-                await deleteComment(e);
-                await fetchComments();
-            } catch(err) {
-                //how to handle error?
-            }
-
-        })
-    })
-
-})
+    });
+});
