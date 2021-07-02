@@ -9,7 +9,8 @@ const { loginUser, logoutUser, requireAuth, restoreUser } = require("../auth");
 router.get('/', asyncHandler( async (req,res) => {
 
   const stories = await Story.findAll({
-    include: User
+    include: User,
+    order: [['createdAt','DESC']],
   });
 
   res.render('homepage', { stories });

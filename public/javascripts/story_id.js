@@ -16,27 +16,26 @@ const fetchComments = async (url) => {
             <div class="comment-content">
                 <p>${comment.content}</p>
             </div class="edit-delete">
-                <button class='comment-edit' id='${comment.id}' type='button'> edit </button>
-                <button class='comment-delete' id='${comment.id}' type='button'></button>
-        </div>`
+            <button class='comment-delete' id='${comment.id}' type='button'></button>
+            </div>`
     );
-    const commentAmount = commentDivs.length;
-    const commentHeader = document.querySelector('.comment__comment-title');
-    commentHeader.innerHTML = `Comments (${commentAmount})`;
-    commentContainer.innerHTML = commentDivs.join('');
+            const commentAmount = commentDivs.length;
+            const commentHeader = document.querySelector('.comment__comment-title');
+            commentHeader.innerHTML = `Comments (${commentAmount})`;
+            commentContainer.innerHTML = commentDivs.join('');
 
-    const deleteButton = document.querySelectorAll('.comment-delete');
-    deleteButton.forEach( button => {
-        button.addEventListener('click', async (e) => {
+            const deleteButton = document.querySelectorAll('.comment-delete');
+            deleteButton.forEach( button => {
+                button.addEventListener('click', async (e) => {
 
-            try{
-                await deleteComment(e.target.id,url);
-                await fetchComments(url);
-            } catch(err) {
-                //how to handle error?
-            }
+                    try{
+                        await deleteComment(e.target.id,url);
+                        await fetchComments(url);
+                    } catch(err) {
+                        //how to handle error?
+                    }
 
-        })
+                })
     })
 }
 
@@ -105,3 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+
+/* <button class='comment-edit' id='${comment.id}' type='button'> edit </button> */
