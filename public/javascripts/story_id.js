@@ -20,6 +20,9 @@ const fetchComments = async (url) => {
                 <button class='comment-delete' id='${comment.id}' type='button'></button>
         </div>`
     );
+    const commentAmount = commentDivs.length;
+    const commentHeader = document.querySelector('.comment__comment-title');
+    commentHeader.innerHTML = `Comments (${commentAmount})`
     commentContainer.innerHTML = commentDivs.join('');
 
     const deleteButton = document.querySelectorAll('.comment-delete');
@@ -30,6 +33,7 @@ const fetchComments = async (url) => {
             console.log(e.target.id)
             try{
                 await deleteComment(e.target.id,url);
+                await fetchComments(url);
             } catch(err) {
                 //how to handle error?
             }
