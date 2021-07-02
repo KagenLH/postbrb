@@ -50,7 +50,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
       const errors = validationErrors.array().map((error) => error.msg);
       res.render('user-login', {csrfToken: req.csrfToken(), errors, email, password})
-   
+
     }
 
 
@@ -78,7 +78,7 @@ router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req
 
   } else {
       const errors = validationErrors.array().map((error) => error.msg);
-   
+
       res.render('user-register', { csrfToken: req.csrfToken(), errors, username, password, confirmPassword, email, avatarUrl})
   }
 }));
@@ -87,7 +87,6 @@ router.post('/signup', csrfProtection, signupValidators, asyncHandler(async (req
 
 router.get("/login/demo", csrfProtection, asyncHandler(async(req, res, next) => {
   const demoUser = await User.findOne({where: {email: 'demo@demo.com' }})
-  console.log(demoUser)
   loginUser(req, res, demoUser)
   req.session.save(() => res.redirect('/'))
 }))
