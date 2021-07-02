@@ -6,7 +6,7 @@ const fetchComments = async (url) => {
     const {comments, user_id} = await res.json();
 
     // TODO: find a way to use user_id to show or not the buttons
-    const commentContainer = document.querySelector('.comment__section') //TODO, add class
+    const commentContainer = document.querySelector('.comment__section');
 
     const commentDivs = comments.map(( comment ) =>
         `<div class="comment" id='comment-${comment.id}'>
@@ -22,15 +22,13 @@ const fetchComments = async (url) => {
     );
     const commentAmount = commentDivs.length;
     const commentHeader = document.querySelector('.comment__comment-title');
-    commentHeader.innerHTML = `Comments (${commentAmount})`
+    commentHeader.innerHTML = `Comments (${commentAmount})`;
     commentContainer.innerHTML = commentDivs.join('');
 
     const deleteButton = document.querySelectorAll('.comment-delete');
     deleteButton.forEach( button => {
         button.addEventListener('click', async (e) => {
-            // console.log('in event listener')
-            console.log(e)
-            console.log(e.target.id)
+
             try{
                 await deleteComment(e.target.id,url);
                 await fetchComments(url);
@@ -76,8 +74,6 @@ const createComment = async (e, url) => {
 
 const deleteComment = async (commentId,url) => {
     const sid = document.querySelector('.story__title').id;  //this is the story_id
-    console.log('in delete function')
-    console.log(sid,commentId)
     const res = await fetch(`${url}/api/stories/${sid}/comments/${commentId}`, {     // change URL FOR DEPLOYMENT
         method: "DELETE",
     });
