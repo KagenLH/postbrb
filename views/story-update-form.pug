@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .story-form__container
+        .logo-container
+            img.logoName(src="/assets/images/postbrb_small.png")
+        if errors
+            ul.story-form__error-list
+                each error in errors
+                    li.login-error #{error}
+        form.story-form(action=`/stories/${id}/update` method="post")
+            input(type="hidden" name="_csrf" id="_csrf" value=csrfToken)
+            label.story-form__label(for="title") Story Title
+            input.story-form__input(type="text" name="title" id="story-form__title" placeholder="Describe your story in a few words..." value=title required)
+            label.story-form__label(for="content") Tell your story
+            textarea.story-form__input(name="content" id="story-form__content" rows="20" cols="100" placeholder="Tell your story here..." required) #{content}
+            .story-form__buttons-container
+                button.story_form-button(type="submit" class="publish") Update
+                a.story_form-button(href="/" class="cancel_button-text") Cancel

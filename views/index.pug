@@ -1,0 +1,23 @@
+extends layout
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+
+block content
+  div.main-cotent
+    h1.main-content__header New on PostBrb
+    if locals.authenticated
+      p Welcome #{locals.user.username}
+    else
+      p You are not logged in and there are currently no stories. You can begin by logging in and creating a story of your own!
+  div.stories
+    if locals.authenticated
+      each story in stories
+        p= story.title
+    else
+      each story in stories
+        p= story.content
+    // Todo: Update logic for stories and authentication

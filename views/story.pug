@@ -1,0 +1,38 @@
+extends layout
+append head
+    script(src="/javascripts/story_id.js" type='module')
+
+block content
+    input(type="hidden" value=url id='hidden-url')
+    .story__page-container
+        section.story__page
+            div.story__title-container
+                div(class="story__title" id=`${story.id}`)
+                    h1.story__story-title= story.title
+                    div.story__publishing-container
+                        img.story__author-avatar(src=story.User.avatarUrl)
+                        div.story__publishing-details
+                            a.story__story-byAuthor(href=`/users/${story.User.id}`) Written by #{story.User.username}
+                            span.story__story-date Published on #{story.createdAt.toLocaleDateString()}
+
+            div.story__content-body
+                div.story__container
+                    article.story__content= story.content
+                        if userId === story.User.id
+                            div.story-update-delete
+                                div#story_update
+                                    a#update-button(href=`/stories/${story.id}/update`) Update
+                                form#story_trash(method="POST" action=`/stories/${story.id}/delete` type="submit" src="/assets/images/trash.png")
+                                    input.trash(type="image" src="/assets/images/trash.png")
+    .comment__container
+        section.comment__page
+            div.comment__title-container
+                div.comment__title
+                    img.commentPic(src="/assets/images/commentHappy.png")
+                    h1.comment__comment-title="Comments"
+                div.comment__textbox-container
+                    form(action=`/api/stories/${story.id}/comments/new` method="post" class="commentForm")
+                        if userId
+                            textarea(name="content" id="comment-form__content" rows="10" cols="40" value=comment placeholder="What are your thoughts?")
+                            button(type="submit" class="postComment") Post
+            div.comment__section

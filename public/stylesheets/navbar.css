@@ -1,0 +1,72 @@
+#navbar {
+    position: fixed;
+    background-color: rgb(12, 12, 154);
+    width: 100%;
+    height: 75px;
+    display: flex;
+
+    justify-content: space-between;
+    z-index: 99;
+}
+
+.navbar-end {
+  display: flex;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 25px;
+}
+.auth-buttons {
+   border-radius: 80px;
+   width: 150px;
+   background-color: blue;
+   text-align: center;
+   text-decoration: none;
+   font-weight: bold;
+   transition: background-color 0.25s;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   color: white;
+}
+
+.auth-buttons:hover {
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
+.user-info-tray {
+  color: rgb(211, 208, 208);
+  margin-right: 25px;
+}
+
+.user-info__text {
+  font-weight: bold;
+} 
+
+#auth-logout-button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logout-link {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-logo {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 75px;
+  width: 100px;
+  /* border-bottom: 2px solid rgb(12, 12, 154); */
+  cursor: pointer;
+  background-color: white;
+}
+
+

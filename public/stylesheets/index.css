@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #555555;
+}
+
+.main-cotent {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.user-avatar {
+    position: relative;
+    margin-top: 10px;
+    margin-right: 12px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    z-index: 99;
+}
+
+.auth-logo {
+    position: relative;
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+}
+
+.layout-footer {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0%;
+    height: 40px;
+    width: 100%;
+    background-color: lightgrey;
+    border: 1px solid gray;
+}
+
+.github-logo {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.footer-container > * {
+    margin: 5px;
+}
