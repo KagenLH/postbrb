@@ -82,3 +82,24 @@
     font-weight: bold;
 }
 
+.demo-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid blue;
+    margin-top: 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    background-color: blue;
+    transition: background-color 0.25s;
+    color: white;
+    text-decoration: none;
+    height: 40px;
+    width: 100px;
+}
+
+.demo-button:hover {
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
