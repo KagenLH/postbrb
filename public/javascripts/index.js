@@ -1,5 +1,5 @@
 window.addEventListener("load", (event)=>{
-
+    
 })
 
 document.addEventListener("DOMContentLoaded", async () => {
